@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import './screens/category_student_screen.dart';
+import './screens/dashboard_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -9,25 +12,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: Colors.red,
+        accentColor: Colors.redAccent,
+        fontFamily: 'Raleway',
+        textTheme: ThemeData.light().textTheme.copyWith(
+          headline1: TextStyle(
+            fontSize: 13,
+            fontFamily: 'RobotoCondensed',
+            fontWeight: FontWeight.bold,
+            color: Colors.black54,
+          ),
+        ),
       ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('SRecruiter'),
-      ),
-      body: Center(
-        child: Text('Welcome to SRecrutier'),
-      ),
+      initialRoute: '/', // default is "/"
+      routes: {
+        '/': (ctx) => DashboardScreen(),
+        CategoryStudentScreen.routeName: (ctx) => CategoryStudentScreen(),
+      },
     );
   }
 }

@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-class StudentModel {
-  final int id;
-  final List<String> categories;
+class PromotedModel {
+  final String id;
   final String imageUrl;
   final String firstName;
   final String lastName;
@@ -15,12 +14,10 @@ class StudentModel {
   final String facebook;
   final String linkedIn;
   final String twitter;
-  bool isPromoted;
   bool isFavorite;
 
-  StudentModel({
+  PromotedModel({
     @required this.id,
-    @required this.categories,
     @required this.imageUrl,
     @required this.firstName,
     @required this.lastName,
@@ -33,6 +30,5 @@ class StudentModel {
     this.facebook,
     this.linkedIn,
     this.twitter,
-    this.isPromoted = false,
     this.isFavorite = false,});
 }
