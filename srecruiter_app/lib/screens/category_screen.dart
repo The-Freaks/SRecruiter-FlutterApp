@@ -7,7 +7,7 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 130.0,
+      height: 140,
       padding: EdgeInsets.only(top: 10),
       child: GridView(
         padding: EdgeInsets.all(5),

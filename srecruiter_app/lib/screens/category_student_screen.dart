@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:srecruiter_app/models/student_model.dart';
 
+import '../models/student_model.dart';
 import '../data/student_data.dart';
+import '../widgets/student_item.dart';
 
 class CategoryStudentScreen extends StatelessWidget {
   static const routeName = "/category-student";
@@ -18,7 +19,14 @@ class CategoryStudentScreen extends StatelessWidget {
         title: Text(categoryTitle),
       ),
       body: ListView.builder(itemBuilder: (ctx, index){
-        return Text(categoryStudent[index].profession);
+        return StudentItem(
+          id: categoryStudent[index].id,
+          firstName: categoryStudent[index].firstName,
+          lastName: categoryStudent[index].lastName,
+          imageUrl: categoryStudent[index].imageUrl,
+          grade: categoryStudent[index].grade,
+          isFavorite: categoryStudent[index].isFavorite,
+        );
       },itemCount: categoryStudent.length,
       )
     );

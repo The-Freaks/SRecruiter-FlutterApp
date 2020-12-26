@@ -22,12 +22,15 @@ class CategoryItem extends StatelessWidget {
       onTap: () => selectedCategory(context),
       borderRadius: BorderRadius.circular(50),
       splashColor: Theme.of(context).primaryColor,
-      child: Container(
-        child: ListTile(
-          title: Image.network(imageUrl),
-          subtitle: Text(
+      child: ListTile(
+        title: Image.network(imageUrl),
+        subtitle: Container(
+          padding: EdgeInsets.only(top: 5),
+          child: Text(
             title,
-            style: Theme.of(context).textTheme.headline1,
+            style:
+            Theme.of(context).textTheme.headline1,
+            textAlign: TextAlign.center,
           ),
         ),
       ),

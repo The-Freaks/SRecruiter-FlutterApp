@@ -7,7 +7,7 @@ class StudentModel {
   final String firstName;
   final String lastName;
   final String profession;
-  final double grade;
+  final String grade;
   final String email;
   final String phoneNumber;
   final String biography;

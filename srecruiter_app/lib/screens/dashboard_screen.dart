@@ -10,7 +10,7 @@ class DashboardScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('SRecruiter'),
       ),
-      body: ListView(
+      body: Column(
         children: <Widget>[
           Text('Categories'),
           CategoryScreen(),

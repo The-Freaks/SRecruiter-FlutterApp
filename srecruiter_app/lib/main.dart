@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './screens/page_not_found_screen.dart';
+import './screens/student_detail_screen.dart';
 import './screens/category_student_screen.dart';
 import './screens/dashboard_screen.dart';
 
@@ -29,6 +31,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (ctx) => DashboardScreen(),
         CategoryStudentScreen.routeName: (ctx) => CategoryStudentScreen(),
+        StudentDetailScreen.routeName: (ctx) => StudentDetailScreen(),
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (ctx) => PageNotFoundScreen());
       },
     );
   }
