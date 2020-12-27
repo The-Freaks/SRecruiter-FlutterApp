@@ -1,10 +1,44 @@
+
 import 'package:flutter/material.dart';
-import 'package:srecruiter_app/models/student_model.dart';
+
+import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../data/student_data.dart';
+import '../screens/page_not_found_screen.dart';
 
 class StudentDetailScreen extends StatelessWidget {
   static const routeName = "/student-detail";
+
+  void _launchUrl(String url, BuildContext ctx) async{
+    if(await canLaunch(url)){
+      await launch(url);
+    }
+    else{
+      throw Navigator.of(ctx).pushNamed(PageNotFoundScreen.routeName);
+    }
+  }
+
+  void _launchCaller(String number, BuildContext ctx) async{
+    var url = "tel:$number";
+    if(await canLaunch(url)){
+      await launch(url);
+    }
+    else{
+      throw Navigator.of(ctx).pushNamed(PageNotFoundScreen.routeName);
+    }
+  }
+
+  void _launchEmail(String emailId, BuildContext ctx) async{
+    var url = "mailto:$emailId?subject= Hola Señor/Señora";
+    if(await canLaunch(url)){
+      await launch(url);
+    }
+    else{
+      throw Navigator.of(ctx).pushNamed(PageNotFoundScreen.routeName);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final studentId = ModalRoute.of(context).settings.arguments as int;
@@ -16,103 +50,118 @@ class StudentDetailScreen extends StatelessWidget {
       body: Center(
         child: ListView(
           children: <Widget>[
-            new Container(
-              height: 300.0,
-              child: GridTile(
-                child: Container(
-                  color: Colors.redAccent,
-                  child: Image.network(selectedStudent.imageUrl, width: double.infinity, fit: BoxFit.cover,),
-                ),
-                footer: new Container(
-                  color: Colors.white70,
-                  child: ListTile(
-                    leading: new Text(selectedStudent.firstName + ' ' + selectedStudent.lastName, style: new TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),),
-                    title: new Row(
-                      children: <Widget> [
-                        Expanded(child: new Text(selectedStudent.profession)),
-                        Expanded(child: new Text('Grade: ' + selectedStudent.grade)),
-                      ],
+            Column(
+              children: <Widget>[
+                Container(
+                  height: 300.0,
+                  child: GridTile(
+                    child: Container(
+                      color: Colors.redAccent,
+                      child: Image.network(selectedStudent.imageUrl, width: double.infinity, fit: BoxFit.cover,),
+                    ),
+                    footer: Container(
+                      height: 50,
+                      color: Colors.white70,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            selectedStudent.firstName + ' ' + selectedStudent.lastName,
+                            style: TextStyle(
+                              fontSize: 17.0,
+                            ),
+                          ),
+                          Text(
+                              selectedStudent.profession,
+                            style: TextStyle(
+                              fontSize: 17.0, fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                              'Grade: ' + selectedStudent.grade,
+                            style: TextStyle(
+                              fontSize: 17.0,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-
-            Row(
-              children: <Widget>[
-                Expanded(
-                    child: MaterialButton(
-                        onPressed: (){},
-                        height: 50.0,
-                        color: Colors.redAccent,
-                        textColor: Colors.white,
-                        elevation: 0.2,
-                        child: new Text("EMAIL NOW")
-                    )
+                SizedBox(height: 10,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    IconButton(
+                      onPressed: () async{
+                        _launchEmail(selectedStudent.email, context);
+                        },
+                      splashColor: Theme.of(context).primaryColor,
+                      splashRadius: 30,
+                      icon: Icon(Icons.email_outlined, color: Theme.of(context).primaryColor,),
+                    ),
+                    IconButton(
+                      onPressed: (){
+                        _launchCaller(selectedStudent.phoneNumber, context);
+                        },
+                      splashColor: Theme.of(context).primaryColor,
+                      splashRadius: 30,
+                      icon: Icon(Icons.call, color: Colors.green,),
+                    ),
+                  ],
                 ),
-                Expanded(
-                    child: MaterialButton(
-                        onPressed: (){},
-                        height: 50.0,
-                        color: Colors.redAccent,
-                        textColor: Colors.white,
-                        elevation: 0.2,
-                        child: new Text("CALL NOW")
-                    )
+                Divider(),
+                ListTile(
+                  title: new Text("Biography", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),),
+                  subtitle:  Padding(padding: const EdgeInsets.fromLTRB(2.0, 10.0, 5.0, 5.0),
+                    child: new Text(selectedStudent.biography, style: new TextStyle(fontSize: 14.0,), textAlign: TextAlign.left ,),),
                 ),
-              ],
-            ),
-
-            Divider(),
-
-            new ListTile(
-              title: new Text("Biography", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),),
-
-              subtitle:  Padding(padding: const EdgeInsets.fromLTRB(2.0, 10.0, 5.0, 5.0),
-                child: new Text(selectedStudent.biography, style: new TextStyle(fontSize: 14.0,), textAlign: TextAlign.left ,),),
-            ),
-
-            Divider(),
-
-            new Row(
-              children: <Widget>[
-                Padding(padding: const EdgeInsets.fromLTRB(12.0, 5.0, 5.0, 5.0),
-                  child: new Text("Instagram:", style: new TextStyle(fontWeight: FontWeight.bold),),),
-                Padding(padding: EdgeInsets.all(5.0),
-                  child: new Text(selectedStudent.instagram),
+                Divider(),
+                Container(
+                  padding: EdgeInsets.only(top: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(
+                          FontAwesomeIcons.instagram,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        onPressed: () {
+                          _launchUrl("https://www.instagram.com/${selectedStudent.instagram}", context);
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          FontAwesomeIcons.facebook,
+                          color: Colors.blue,
+                        ),
+                        onPressed: () {
+                          _launchUrl("https://www.facebook.com/${selectedStudent.facebook}", context);
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          FontAwesomeIcons.linkedin,
+                          color: Colors.blueAccent,
+                        ),
+                        onPressed: () {
+                          _launchUrl("https://www.linkedin.com/${selectedStudent.linkedIn}", context);
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          FontAwesomeIcons.twitter,
+                          color: Colors.blue,
+                        ),
+                        onPressed: () {
+                          _launchUrl("https://www.twitter.com/${selectedStudent.twitter}", context);
+                        },
+                      ),
+                  ],),
                 )
               ],
             ),
-
-            new Row(
-              children: <Widget>[
-                Padding(padding: const EdgeInsets.fromLTRB(12.0, 5.0, 17.0, 0.0),
-                  child: new Text("LinkedIn:", style: new TextStyle(fontWeight: FontWeight.bold),),),
-                Padding(padding: EdgeInsets.all(5.0),
-                  child: new Text(selectedStudent.facebook),
-                )
-              ],
-            ),
-
-            new Row(
-              children: <Widget>[
-                Padding(padding: const EdgeInsets.fromLTRB(12.0, 5.0, 28.0, 5.0),
-                  child: new Text("Twitter:", style: new TextStyle(fontWeight: FontWeight.bold),),),
-                Padding(padding: EdgeInsets.all(5.0),
-                  child: new Text(selectedStudent.linkedIn),
-                )
-              ],
-            ),
-
-            new Row(
-              children: <Widget>[
-                Padding(padding: const EdgeInsets.fromLTRB(12.0, 5.0, 10.0, 5.0),
-                  child: new Text("Facebook:", style: new TextStyle(fontWeight: FontWeight.bold),),),
-                Padding(padding: EdgeInsets.all(5.0),
-                  child: new Text(selectedStudent.twitter),
-                )
-              ],
-            )
           ],
         ),
       ),

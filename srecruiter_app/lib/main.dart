@@ -27,11 +27,13 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+      debugShowCheckedModeBanner: false,
       initialRoute: '/', // default is "/"
       routes: {
         '/': (ctx) => DashboardScreen(),
         CategoryStudentScreen.routeName: (ctx) => CategoryStudentScreen(),
         StudentDetailScreen.routeName: (ctx) => StudentDetailScreen(),
+        PageNotFoundScreen.routeName: (ctx) => PageNotFoundScreen(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (ctx) => PageNotFoundScreen());

@@ -18,12 +18,12 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => selectedCategory(context),
-      borderRadius: BorderRadius.circular(50),
-      splashColor: Theme.of(context).primaryColor,
-      child: ListTile(
-        title: Image.network(imageUrl),
+    return ListTile(
+        title: InkWell(
+            onTap: () => selectedCategory(context),
+            splashColor: Theme.of(context).primaryColor,
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(imageUrl)),
         subtitle: Container(
           padding: EdgeInsets.only(top: 5),
           child: Text(
@@ -33,7 +33,6 @@ class CategoryItem extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ),
-      ),
-    );
+      );
   }
 }

@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  font_awesome_flutter: ^8.11.0
+  url_launcher: ^5.7.10
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -45,9 +47,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -63,19 +64,19 @@ flutter:
   fonts:
     - family: Raleway
       fonts:
-        - asset: Assests/Fonts/Raleway-Regular.ttf
-        - asset: Assests/Fonts/Raleway-Bold.ttf
+        - asset: assets/Fonts/Raleway-Regular.ttf
+        - asset: assets/Fonts/Raleway-Bold.ttf
           weight: 700
-        - asset: Assests/Fonts/Raleway-Black.ttf
+        - asset: assets/Fonts/Raleway-Black.ttf
           weight: 900
     - family: RobotoCondensed
       fonts:
-        - asset: Assests/Fonts/RobotoCondensed-Regular.ttf
-        - asset: Assests/Fonts/RobotoCondensed-Bold.ttf
+        - asset: assets/Fonts/RobotoCondensed-Regular.ttf
+        - asset: assets/Fonts/RobotoCondensed-Bold.ttf
           weight: 700
-        - asset: Assests/Fonts/RobotoCondensed-Light.ttf
+        - asset: assets/Fonts/RobotoCondensed-Light.ttf
           weight: 300
-        - asset: Assests/Fonts/RobotoCondensed-Italic.ttf
+        - asset: assets/Fonts/RobotoCondensed-Italic.ttf
           style: italic
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

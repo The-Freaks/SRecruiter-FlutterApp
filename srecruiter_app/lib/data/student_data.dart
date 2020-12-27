@@ -17,10 +17,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@niityyy',
-    facebook: '@niityyy',
-    linkedIn: '@niityyy',
-    twitter: '@niityyy',
+    instagram: 'niityyy',
+    facebook: 'niti.kfg',
+    linkedIn: 'niityyy',
+    twitter: 'niityyy',
     isPromoted: false,
   ),
   StudentModel(
@@ -39,10 +39,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@arbermirena',
-    facebook: '@arbermirena',
-    linkedIn: '@arbermirena',
-    twitter: '@arbermirena',
+    instagram: 'arbermirena',
+    facebook: 'arbermirena',
+    linkedIn: 'arbermirena',
+    twitter: 'arbermirena',
     isPromoted: false,
   ),
   StudentModel(
@@ -61,10 +61,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@diellzalushi',
-    facebook: '@diellzalushi',
-    linkedIn: '@diellzalushi',
-    twitter: '@diellzalushi',
+    instagram: 'diellzalushi',
+    facebook: 'diellzalushi',
+    linkedIn: 'diellzalushi',
+    twitter: 'diellzalushi',
     isPromoted: false,
   ),
   StudentModel(
@@ -83,10 +83,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@idealhaziraj',
-    facebook: '@idealhaziraj',
-    linkedIn: '@idealhaziraj',
-    twitter: '@idealhaziraj',
+    instagram: 'idealhaziraj',
+    facebook: 'idealhaziraj',
+    linkedIn: 'idealhaziraj',
+    twitter: 'idealhaziraj',
     isPromoted: false,
   ),
   StudentModel(
@@ -105,10 +105,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@idealhaziraj',
-    facebook: '@idealhaziraj',
-    linkedIn: '@idealhaziraj',
-    twitter: '@idealhaziraj',
+    instagram: 'idealhaziraj',
+    facebook: 'idealhaziraj',
+    linkedIn: 'idealhaziraj',
+    twitter: 'idealhaziraj',
     isPromoted: false,
   ),
   StudentModel(
@@ -127,10 +127,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@idealhaziraj',
-    facebook: '@idealhaziraj',
-    linkedIn: '@idealhaziraj',
-    twitter: '@idealhaziraj',
+    instagram: 'idealhaziraj',
+    facebook: 'idealhaziraj',
+    linkedIn: 'idealhaziraj',
+    twitter: 'idealhaziraj',
     isPromoted: false,
   ),
   StudentModel(
@@ -149,10 +149,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@idealhaziraj',
-    facebook: '@idealhaziraj',
-    linkedIn: '@idealhaziraj',
-    twitter: '@idealhaziraj',
+    instagram: 'idealhaziraj',
+    facebook: 'idealhaziraj',
+    linkedIn: 'idealhaziraj',
+    twitter: 'idealhaziraj',
     isPromoted: false,
   ),
   StudentModel(
@@ -171,10 +171,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@idealhaziraj',
-    facebook: '@idealhaziraj',
-    linkedIn: '@idealhaziraj',
-    twitter: '@idealhaziraj',
+    instagram: 'idealhaziraj',
+    facebook: 'idealhaziraj',
+    linkedIn: 'idealhaziraj',
+    twitter: 'idealhaziraj',
     isPromoted: false,
   ),
   StudentModel(
@@ -193,10 +193,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@idealhaziraj',
-    facebook: '@idealhaziraj',
-    linkedIn: '@idealhaziraj',
-    twitter: '@idealhaziraj',
+    instagram: 'idealhaziraj',
+    facebook: 'idealhaziraj',
+    linkedIn: 'idealhaziraj',
+    twitter: 'idealhaziraj',
     isPromoted: false,
   ),
   StudentModel(
@@ -215,10 +215,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@idealhaziraj',
-    facebook: '@idealhaziraj',
-    linkedIn: '@idealhaziraj',
-    twitter: '@idealhaziraj',
+    instagram: 'idealhaziraj',
+    facebook: 'idealhaziraj',
+    linkedIn: 'idealhaziraj',
+    twitter: 'idealhaziraj',
     isPromoted: false,
   ),
   StudentModel(
@@ -237,10 +237,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@idealhaziraj',
-    facebook: '@idealhaziraj',
-    linkedIn: '@idealhaziraj',
-    twitter: '@idealhaziraj',
+    instagram: 'idealhaziraj',
+    facebook: 'idealhaziraj',
+    linkedIn: 'idealhaziraj',
+    twitter: 'idealhaziraj',
     isPromoted: false,
   ),
   StudentModel(
@@ -259,10 +259,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@idealhaziraj',
-    facebook: '@idealhaziraj',
-    linkedIn: '@idealhaziraj',
-    twitter: '@idealhaziraj',
+    instagram: 'idealhaziraj',
+    facebook: 'idealhaziraj',
+    linkedIn: 'idealhaziraj',
+    twitter: 'idealhaziraj',
     isPromoted: false,
   ),
   StudentModel(
@@ -281,10 +281,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@idealhaziraj',
-    facebook: '@idealhaziraj',
-    linkedIn: '@idealhaziraj',
-    twitter: '@idealhaziraj',
+    instagram: 'idealhaziraj',
+    facebook: 'idealhaziraj',
+    linkedIn: 'idealhaziraj',
+    twitter: 'idealhaziraj',
     isPromoted: false,
   ),
   StudentModel(
@@ -303,10 +303,10 @@ final List<StudentModel> studentData = [
         'typesetting industry. Lorem Ipsum has been the industry''s '
         'standard dummy text ever since the 1500s, when an unknown printer '
         'took a galley of type and scrambled it to make a type specimen book.',
-    instagram: '@idealhaziraj',
-    facebook: '@idealhaziraj',
-    linkedIn: '@idealhaziraj',
-    twitter: '@idealhaziraj',
+    instagram: 'idealhaziraj',
+    facebook: 'idealhaziraj',
+    linkedIn: 'idealhaziraj',
+    twitter: 'idealhaziraj',
     isPromoted: false,
   ),
 ];

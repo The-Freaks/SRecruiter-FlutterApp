@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../data/student_data.dart';
 import 'category_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -10,9 +9,19 @@ class DashboardScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('SRecruiter'),
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
-          Text('Categories'),
+          Container(
+            alignment: Alignment.centerLeft,
+            padding: const EdgeInsets.only(top: 15, left: 15),
+            child: Text(
+              'Categories',
+              style: TextStyle(
+                color: Colors.blue,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
           CategoryScreen(),
         ],
       ),
