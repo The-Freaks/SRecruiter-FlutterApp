@@ -18,10 +18,8 @@ class StudentItem extends StatelessWidget {
     @required this.isFavorite,
   });
 
-  void selectStudent(BuildContext ctx){
-    Navigator.of(ctx).pushNamed(
-        StudentDetailScreen.routeName,
-        arguments: id);
+  void selectStudent(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(StudentDetailScreen.routeName, arguments: id);
   }
 
   @override
@@ -35,28 +33,33 @@ class StudentItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         margin: EdgeInsets.all(10),
-        child: Column(children: <Widget>[
-          ListTile(
-            leading: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: Image.network(imageUrl, fit: BoxFit.cover,),
-            ),
-            title: Text(firstName + ' ' + lastName),
-            subtitle: Text('Grade: ' + grade),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-              Icon(
-                Icons.favorite,
-                color: Theme.of(context).accentColor,
-              ),
-              Icon(
-                Icons.restore_from_trash,
-                color: Theme.of(context).primaryColor,
-              ),
-            ],)
-          ),
-        ],),
+        child: Column(
+          children: <Widget>[
+            ListTile(
+                leading: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.network(
+                    imageUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                title: Text(firstName + ' ' + lastName),
+                subtitle: Text('Grade: ' + grade),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Icon(
+                      Icons.favorite,
+                      color: Theme.of(context).accentColor,
+                    ),
+                    Icon(
+                      Icons.restore_from_trash,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ],
+                )),
+          ],
+        ),
       ),
     );
   }

@@ -12,15 +12,13 @@ class CategoryScreen extends StatelessWidget {
       child: GridView(
         padding: EdgeInsets.all(5),
         scrollDirection: Axis.horizontal,
-        children: CategoryData
-            .map(
-                (catData) => Center(
-                  child: CategoryItem(
-                    catData.id,
-                    catData.title,
-                    catData.imageUrl,
-                  ),
-                )).toList(),
+        children: CategoryData.map((catData) => Center(
+              child: CategoryItem(
+                catData.id,
+                catData.title,
+                catData.imageUrl,
+              ),
+            )).toList(),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 130,
           // // childAspectRatio: 0.5,

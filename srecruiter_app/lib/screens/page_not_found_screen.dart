@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class PageNotFoundScreen extends StatelessWidget {
   static const routeName = "/page-not-found";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,7 +10,12 @@ class PageNotFoundScreen extends StatelessWidget {
         title: Text('404 error'),
       ),
       body: Center(
-        child: Image.asset('assets/images/404.jpg', height: double.infinity, width: double.infinity, fit: BoxFit.cover,),
+        child: Image.asset(
+          'assets/images/404.jpg',
+          height: double.infinity,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

@@ -34,5 +34,6 @@ class StudentModel {
     this.linkedIn,
     this.twitter,
     this.isPromoted = false,
-    this.isFavorite = false,});
+    this.isFavorite = false,
+  });
 }

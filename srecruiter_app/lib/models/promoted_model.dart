@@ -30,5 +30,6 @@ class PromotedModel {
     this.facebook,
     this.linkedIn,
     this.twitter,
-    this.isFavorite = false,});
+    this.isFavorite = false,
+  });
 }
