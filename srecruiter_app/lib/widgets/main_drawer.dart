@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../screens/login_screen.dart';
+
 class MainDrawer extends StatelessWidget {
-  Widget buildListTile(String title, IconData icon) {
+  Widget buildListTile(String title, IconData icon, Function tapHandler) {
     return ListTile(
       leading: Icon(
         icon,
@@ -15,6 +17,7 @@ class MainDrawer extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
+      onTap: tapHandler,
     );
   }
 
@@ -32,11 +35,27 @@ class MainDrawer extends StatelessWidget {
               'assets/images/SR-logo.png',
             ),
           ),
-          SizedBox(height: 20,),
-          buildListTile('Dashboard', Icons.dashboard_rounded),
-          SizedBox(height: 5,),
+          SizedBox(
+            height: 20,
+          ),
+          buildListTile(
+            'Dashboard',
+            Icons.dashboard_rounded,
+            () {
+              Navigator.of(context).pushNamed('/');
+            },
+          ),
+          SizedBox(
+            height: 5,
+          ),
           Divider(),
-          buildListTile('Login', Icons.login_rounded),
+          buildListTile(
+            'Login',
+            Icons.login_rounded,
+            () {
+              Navigator.of(context).pushNamed(LoginScreen.routeName);
+            },
+          ),
         ],
       ),
     );
