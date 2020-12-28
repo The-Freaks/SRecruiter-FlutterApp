@@ -42,7 +42,7 @@ class MainDrawer extends StatelessWidget {
             'Dashboard',
             Icons.dashboard_rounded,
             () {
-              Navigator.of(context).pushNamed('/');
+              Navigator.of(context).pushReplacementNamed('/');
             },
           ),
           SizedBox(
@@ -53,7 +53,7 @@ class MainDrawer extends StatelessWidget {
             'Login',
             Icons.login_rounded,
             () {
-              Navigator.of(context).pushNamed(LoginScreen.routeName);
+              Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
             },
           ),
         ],
