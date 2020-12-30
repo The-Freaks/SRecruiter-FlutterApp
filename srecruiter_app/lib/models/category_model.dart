@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CategoryModel {
+class CategoryModel with ChangeNotifier {
   final String id;
   final String title;
   final String imageUrl;
 
-  const CategoryModel(
-      {@required this.id, @required this.title, @required this.imageUrl});
+  CategoryModel({@required this.id, @required this.title, @required this.imageUrl});
 }

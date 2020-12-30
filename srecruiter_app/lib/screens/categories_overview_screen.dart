@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'category_screen.dart';
+import '../widgets/category_list.dart';
 
-class DashboardScreen extends StatelessWidget {
+class CategoriesOverviewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -18,7 +18,7 @@ class DashboardScreen extends StatelessWidget {
             ),
           ),
         ),
-        CategoryScreen(),
+        CategoryList(),
       ],
     );
   }

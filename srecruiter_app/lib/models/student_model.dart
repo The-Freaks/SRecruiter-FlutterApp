@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 
-class StudentModel {
+class StudentModel with ChangeNotifier {
   final int id;
-  final List<String> categories;
+  final List<String> categoriesId;
   final String imageUrl;
   final String firstName;
   final String lastName;
@@ -20,7 +20,7 @@ class StudentModel {
 
   StudentModel({
     @required this.id,
-    @required this.categories,
+    @required this.categoriesId,
     @required this.imageUrl,
     @required this.firstName,
     @required this.lastName,
@@ -36,4 +36,9 @@ class StudentModel {
     this.isPromoted = false,
     this.isFavorite = false,
   });
+
+  void toggelFavoriteStatus(){
+    isFavorite = !isFavorite;
+    notifyListeners();
+  }
 }

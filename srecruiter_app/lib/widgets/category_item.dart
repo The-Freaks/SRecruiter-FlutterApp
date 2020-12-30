@@ -1,33 +1,29 @@
 import 'package:flutter/material.dart';
 
-import '../screens/category_student_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:srecruiter_app/models/category_model.dart';
+
+import '../screens/category_students_screen.dart';
 
 class CategoryItem extends StatelessWidget {
-  final String id;
-  final String title;
-  final String imageUrl;
-
-  CategoryItem(this.id, this.title, this.imageUrl);
-
-  void selectedCategory(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(CategoryStudentScreen.routeName, arguments: {
-      'id': id,
-      'title': title,
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final category = Provider.of<CategoryModel>(context);
     return ListTile(
       title: InkWell(
-          onTap: () => selectedCategory(context),
+          onTap: (){
+            Navigator.of(context).pushNamed(CategoryStudentsScreen.routeName, arguments: {
+              'id': category.id,
+              'title': category.title,
+            });
+          },
           splashColor: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(15),
-          child: Image.network(imageUrl)),
+          child: Image.network(category.imageUrl)),
       subtitle: Container(
         padding: EdgeInsets.only(top: 5),
         child: Text(
-          title,
+          category.title,
           style: Theme.of(context).textTheme.headline1,
           textAlign: TextAlign.center,
         ),

@@ -1,31 +1,18 @@
 import 'package:flutter/material.dart';
+
+import 'package:provider/provider.dart';
+import 'package:srecruiter_app/models/student_model.dart';
+
 import '../screens/student_detail_screen.dart';
 
 class StudentItem extends StatelessWidget {
-  final int id;
-  final String firstName;
-  final String lastName;
-  final String imageUrl;
-  final String grade;
-  final bool isFavorite;
-
-  StudentItem({
-    @required this.id,
-    @required this.firstName,
-    @required this.lastName,
-    @required this.imageUrl,
-    @required this.grade,
-    @required this.isFavorite,
-  });
-
-  void selectStudent(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(StudentDetailScreen.routeName, arguments: id);
-  }
-
   @override
   Widget build(BuildContext context) {
+    final student = Provider.of<StudentModel>(context);
     return InkWell(
-      onTap: () => selectStudent(context),
+      onTap: () {
+        Navigator.of(context).pushNamed(StudentDetailScreen.routeName, arguments: student.id);
+      },
       borderRadius: BorderRadius.circular(15),
       splashColor: Theme.of(context).accentColor,
       child: Card(
@@ -39,22 +26,30 @@ class StudentItem extends StatelessWidget {
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
                   child: Image.network(
-                    imageUrl,
+                    student.imageUrl,
                     fit: BoxFit.cover,
                   ),
                 ),
-                title: Text(firstName + ' ' + lastName),
-                subtitle: Text('Grade: ' + grade),
+                title: Text(student.firstName + ' ' + student.lastName),
+                subtitle: Text('Grade: ' + student.grade),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Icon(
-                      Icons.favorite,
-                      color: Theme.of(context).accentColor,
+                    IconButton(
+                      onPressed: (){
+                        student.toggelFavoriteStatus();
+                      },
+                      icon: Icon(
+                        student.isFavorite ? Icons.favorite : Icons.favorite_border_rounded,
+                        color: Theme.of(context).accentColor,
+                      ),
                     ),
-                    Icon(
-                      Icons.restore_from_trash,
-                      color: Theme.of(context).primaryColor,
+                    IconButton(
+                      onPressed: null,
+                      icon: Icon(
+                        Icons.restore_from_trash,
+                        color: Theme.of(context).primaryColor,
+                      ),
                     ),
                   ],
                 )),

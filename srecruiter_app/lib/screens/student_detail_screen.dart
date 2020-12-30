@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:srecruiter_app/providers/students_provider.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
-import '../data/student_data.dart';
 import '../screens/page_not_found_screen.dart';
 
 class StudentDetailScreen extends StatelessWidget {
@@ -38,11 +39,21 @@ class StudentDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final studentId = ModalRoute.of(context).settings.arguments as int;
-    final selectedStudent =
-        studentData.firstWhere((StudentModel) => StudentModel.id == studentId);
+    final selectedStudent = Provider.of<StudentsProvider>(context, listen: false).findStudentById(studentId);
     return Scaffold(
       appBar: AppBar(
         title: Text(selectedStudent.firstName + ' ' + selectedStudent.lastName),
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {
+        //       selectedStudent.toggelFavoriteStatus();
+        //       print(selectedStudent.isFavorite);
+        //     },
+        //     icon: Icon(
+        //       selectedStudent.isFavorite ? Icons.favorite : Icons.favorite_border_rounded,
+        //     ),
+        //   ),
+        // ],
       ),
       body: Center(
         child: ListView(
@@ -66,14 +77,6 @@ class StudentDetailScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text(
-                            selectedStudent.firstName +
-                                ' ' +
-                                selectedStudent.lastName,
-                            style: TextStyle(
-                              fontSize: 17.0,
-                            ),
-                          ),
                           Text(
                             selectedStudent.profession,
                             style: TextStyle(
@@ -142,7 +145,6 @@ class StudentDetailScreen extends StatelessWidget {
                 ),
                 Divider(),
                 Container(
-                  padding: EdgeInsets.only(top: 30),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[

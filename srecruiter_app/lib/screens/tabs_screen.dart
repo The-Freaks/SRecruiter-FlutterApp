@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/main_drawer.dart';
-import './dashboard_screen.dart';
+import './categories_overview_screen.dart';
 import './favorites_screen.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -12,8 +13,8 @@ class TabsScreen extends StatefulWidget {
 class _TabsScreenState extends State<TabsScreen> {
   final List<Map<String, Object>> _pages = [
     {
-      'page': DashboardScreen(),
-      'title': 'Dashboard',
+      'page': CategoriesOverviewScreen(),
+      'title': 'Categories',
     },
     {
       'page': FavoritesScreen(),
@@ -47,7 +48,7 @@ class _TabsScreenState extends State<TabsScreen> {
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
             icon: Icon(Icons.dashboard_rounded),
-            label: 'Dashboard',
+            label: 'Categories',
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:srecruiter_app/providers/students_provider.dart';
 
-import '../models/student_model.dart';
-import '../data/student_data.dart';
 import '../widgets/student_item.dart';
 
-class CategoryStudentScreen extends StatelessWidget {
+class CategoryStudentsScreen extends StatelessWidget {
   static const routeName = "/category-student";
 
   @override
@@ -13,8 +13,8 @@ class CategoryStudentScreen extends StatelessWidget {
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     final categoryTitle = routeArgs['title'];
     final categoryId = routeArgs['id'];
-    final categoryStudent = studentData.where((StudentModel) {
-      return StudentModel.categories.contains(categoryId);
+    final categoryStudent = Provider.of<StudentsProvider>(context).studentItems.where((stud) {
+      return stud.categoriesId.contains(categoryId);
     }).toList();
     return Scaffold(
         appBar: AppBar(
@@ -22,13 +22,9 @@ class CategoryStudentScreen extends StatelessWidget {
         ),
         body: ListView.builder(
           itemBuilder: (ctx, index) {
-            return StudentItem(
-              id: categoryStudent[index].id,
-              firstName: categoryStudent[index].firstName,
-              lastName: categoryStudent[index].lastName,
-              imageUrl: categoryStudent[index].imageUrl,
-              grade: categoryStudent[index].grade,
-              isFavorite: categoryStudent[index].isFavorite,
+            return ChangeNotifierProvider.value(
+              value: categoryStudent[index],
+              child: StudentItem(),
             );
           },
           itemCount: categoryStudent.length,
