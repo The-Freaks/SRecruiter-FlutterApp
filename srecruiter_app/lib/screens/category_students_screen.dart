@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../screens/edit_student_screen.dart';
 import '../widgets/category_student_item.dart';
 
 enum FilterOptions {
@@ -53,7 +54,9 @@ class _CategoryStudentsScreenState extends State<CategoryStudentsScreen> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         splashColor: Theme.of(context).primaryColor,
-        onPressed: (){},
+        onPressed: (){
+          Navigator.of(context).pushNamed(EditStudentScreen.routeName);
+        },
       ),
     );
   }

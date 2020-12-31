@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import './screens/edit_student_screen.dart';
 import './providers/students_provider.dart';
 import './screens/categories_overview_screen.dart';
 import './providers/categories_provider.dart';
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
           StudentDetailScreen.routeName: (ctx) => StudentDetailScreen(),
           PageNotFoundScreen.routeName: (ctx) => PageNotFoundScreen(),
           LoginScreen.routeName: (ctx) => LoginScreen(),
+          EditStudentScreen.routeName: (ctx) => EditStudentScreen(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (ctx) => PageNotFoundScreen());

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class EditStudentScreen extends StatefulWidget {
+  static const routeName = '/edit-student';
   @override
   _EditStudentScreenState createState() => _EditStudentScreenState();
 }
