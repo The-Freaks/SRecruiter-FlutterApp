@@ -8,6 +8,15 @@ class EditStudentScreen extends StatefulWidget {
 class _EditStudentScreenState extends State<EditStudentScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Edit student'),
+      ),
+      body: Center(
+        child: Text(
+          'This is the Edit Screen.'
+        ),
+      ),
+    );
   }
 }
