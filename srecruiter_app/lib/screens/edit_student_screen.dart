@@ -32,6 +32,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
             TextFormField(
               decoration: InputDecoration(labelText: 'Grade'),
               textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.number,
             ),
             TextFormField(
               decoration: InputDecoration(labelText: 'Email'),
@@ -40,6 +41,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
             TextFormField(
               decoration: InputDecoration(labelText: 'Number'),
               textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.number,
             ),
             TextFormField(
               decoration: InputDecoration(labelText: 'Biography'),
