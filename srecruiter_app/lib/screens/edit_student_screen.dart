@@ -12,11 +12,17 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
       appBar: AppBar(
         title: Text('Edit student'),
       ),
-      body: Form(child: ListView(
-        children: [
-          TextFormField(decoration: InputDecoration(labelText: 'Title'),),
-        ],
-      )),
+      body: Padding(
+        padding: const EdgeInsets.all(15),
+        child: Form(child: ListView(
+          children: [
+            TextFormField(
+              decoration: InputDecoration(labelText: 'First Name'),
+              textInputAction: TextInputAction.next,
+            ),
+          ],
+        )),
+      ),
     );
   }
 }
