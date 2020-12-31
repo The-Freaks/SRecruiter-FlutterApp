@@ -28,14 +28,14 @@ class _CategoryStudentsScreenState extends State<CategoryStudentsScreen> {
         actions: <Widget>[
           PopupMenuButton(
               onSelected: (FilterOptions selectedValue) {
-                    setState(() {
-                      if (selectedValue == FilterOptions.Favorites) {
-                        _showOnlyFavorites = true;
-                      } else {
-                        _showOnlyFavorites = false;
-                      }
-                    });
-                  },
+                setState(() {
+                  if (selectedValue == FilterOptions.Favorites) {
+                    _showOnlyFavorites = true;
+                  } else {
+                    _showOnlyFavorites = false;
+                  }
+                });
+              },
               icon: Icon(Icons.more_vert),
               itemBuilder: (_) => [
                     PopupMenuItem(
@@ -50,6 +50,11 @@ class _CategoryStudentsScreenState extends State<CategoryStudentsScreen> {
         ],
       ),
       body: CategoryStudentItem(_showOnlyFavorites),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        splashColor: Theme.of(context).primaryColor,
+        onPressed: (){},
+      ),
     );
   }
 }

@@ -11,8 +11,9 @@ class CategoryItem extends StatelessWidget {
     final category = Provider.of<CategoryModel>(context);
     return ListTile(
       title: InkWell(
-          onTap: (){
-            Navigator.of(context).pushNamed(CategoryStudentsScreen.routeName, arguments: {
+          onTap: () {
+            Navigator.of(context)
+                .pushNamed(CategoryStudentsScreen.routeName, arguments: {
               'id': category.id,
               'title': category.title,
             });

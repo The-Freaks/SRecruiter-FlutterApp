@@ -8,7 +8,7 @@ class StudentsProvider with ChangeNotifier {
       id: 1,
       categoriesId: ['se'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/13164402_1222684387764150_6477654281753606023_n.jpg?_nc_cat=107&ccb=2&_nc_sid=09cbfe&_nc_ohc=0quF60pbwGkAX8H0rgV&_nc_ht=scontent-mxp1-2.xx&oh=bfc1c7fba9e9886ee34f45e2069ccf44&oe=600BD880',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/13164402_1222684387764150_6477654281753606023_n.jpg?_nc_cat=107&ccb=2&_nc_sid=09cbfe&_nc_ohc=0quF60pbwGkAX8H0rgV&_nc_ht=scontent-mxp1-2.xx&oh=bfc1c7fba9e9886ee34f45e2069ccf44&oe=600BD880',
       firstName: 'Arjanit',
       lastName: 'Kotorri',
       profession: 'Mobile Developer',
@@ -29,7 +29,7 @@ class StudentsProvider with ChangeNotifier {
       id: 2,
       categoriesId: ['se'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/32737294_365232333985978_5537160310034530304_n.jpg?_nc_cat=101&ccb=2&_nc_sid=09cbfe&_nc_ohc=M3ChFfQcresAX9trApG&_nc_ht=scontent-mxp1-2.xx&oh=f18ec964cf26455e8da2cb2690d7ee7a&oe=600D0DF3',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/32737294_365232333985978_5537160310034530304_n.jpg?_nc_cat=101&ccb=2&_nc_sid=09cbfe&_nc_ohc=M3ChFfQcresAX9trApG&_nc_ht=scontent-mxp1-2.xx&oh=f18ec964cf26455e8da2cb2690d7ee7a&oe=600D0DF3',
       firstName: 'Arber',
       lastName: 'Mirena',
       profession: 'Front End Developer',
@@ -51,7 +51,7 @@ class StudentsProvider with ChangeNotifier {
       id: 3,
       categoriesId: ['se'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/82281086_624218655015356_4381719446331326464_n.jpg?_nc_cat=100&ccb=2&_nc_sid=09cbfe&_nc_ohc=iq8Mv5fXRssAX__7pO7&_nc_ht=scontent-mxp1-2.xx&oh=827739925af0a3c60affb1bbca89f062&oe=600ED147',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/82281086_624218655015356_4381719446331326464_n.jpg?_nc_cat=100&ccb=2&_nc_sid=09cbfe&_nc_ohc=iq8Mv5fXRssAX__7pO7&_nc_ht=scontent-mxp1-2.xx&oh=827739925af0a3c60affb1bbca89f062&oe=600ED147',
       firstName: 'Diellza',
       lastName: 'Lushi',
       profession: 'Front End Developer',
@@ -73,7 +73,7 @@ class StudentsProvider with ChangeNotifier {
       id: 4,
       categoriesId: ['se'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Ideal',
       lastName: 'Haziraj',
       profession: 'Back End Developer',
@@ -95,7 +95,7 @@ class StudentsProvider with ChangeNotifier {
       id: 5,
       categoriesId: ['gd'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Hamdi',
       lastName: 'Gashi',
       profession: 'Graphic Design',
@@ -117,7 +117,7 @@ class StudentsProvider with ChangeNotifier {
       id: 6,
       categoriesId: ['gd'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Shukri',
       lastName: 'Gashi',
       profession: 'Graphic Design',
@@ -139,7 +139,7 @@ class StudentsProvider with ChangeNotifier {
       id: 7,
       categoriesId: ['gd'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Sevdaim',
       lastName: 'Gashi',
       profession: 'Graphic Design',
@@ -161,7 +161,7 @@ class StudentsProvider with ChangeNotifier {
       id: 8,
       categoriesId: ['gd'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Shpresmir',
       lastName: 'Gashi',
       profession: 'Graphic Design',
@@ -183,7 +183,7 @@ class StudentsProvider with ChangeNotifier {
       id: 9,
       categoriesId: ['bm'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Albin',
       lastName: 'Kurti',
       profession: 'Business Management',
@@ -205,7 +205,7 @@ class StudentsProvider with ChangeNotifier {
       id: 10,
       categoriesId: ['bm'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Isa',
       lastName: 'Mustafa',
       profession: 'Business Management',
@@ -227,7 +227,7 @@ class StudentsProvider with ChangeNotifier {
       id: 11,
       categoriesId: ['inf'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Donika',
       lastName: 'Gashi',
       profession: 'Infirmary',
@@ -249,7 +249,7 @@ class StudentsProvider with ChangeNotifier {
       id: 12,
       categoriesId: ['inf'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Shpresa',
       lastName: 'Gashi',
       profession: 'Infirmary',
@@ -271,7 +271,7 @@ class StudentsProvider with ChangeNotifier {
       id: 13,
       categoriesId: ['eng'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Blerta',
       lastName: 'Gashi',
       profession: 'English',
@@ -293,7 +293,7 @@ class StudentsProvider with ChangeNotifier {
       id: 14,
       categoriesId: ['eng'],
       imageUrl:
-      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
+          'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Arta',
       lastName: 'Gashi',
       profession: 'English',
@@ -321,7 +321,7 @@ class StudentsProvider with ChangeNotifier {
     return _studentItems.where((studItem) => studItem.isFavorite).toList();
   }
 
-  StudentModel findStudentById(int id){
+  StudentModel findStudentById(int id) {
     return studentItems.firstWhere((stud) => stud.id == id);
   }
 }

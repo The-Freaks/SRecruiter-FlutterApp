@@ -37,7 +37,7 @@ class StudentModel with ChangeNotifier {
     this.isFavorite = false,
   });
 
-  void toggelFavoriteStatus(){
+  void toggelFavoriteStatus() {
     isFavorite = !isFavorite;
     notifyListeners();
   }

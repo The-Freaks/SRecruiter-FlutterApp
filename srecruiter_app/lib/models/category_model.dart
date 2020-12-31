@@ -5,5 +5,6 @@ class CategoryModel with ChangeNotifier {
   final String title;
   final String imageUrl;
 
-  CategoryModel({@required this.id, @required this.title, @required this.imageUrl});
+  CategoryModel(
+      {@required this.id, @required this.title, @required this.imageUrl});
 }
