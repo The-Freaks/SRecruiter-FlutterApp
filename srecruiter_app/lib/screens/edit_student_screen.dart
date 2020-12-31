@@ -21,6 +21,46 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
               decoration: InputDecoration(labelText: 'First Name'),
               textInputAction: TextInputAction.next,
             ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Last Name'),
+              textInputAction: TextInputAction.next,
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Profession'),
+              textInputAction: TextInputAction.next,
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Grade'),
+              textInputAction: TextInputAction.next,
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Email'),
+              textInputAction: TextInputAction.next,
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Number'),
+              textInputAction: TextInputAction.next,
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Biography'),
+              textInputAction: TextInputAction.next,
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Instagram'),
+              textInputAction: TextInputAction.next,
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Facebook'),
+              textInputAction: TextInputAction.next,
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'LinkedIn'),
+              textInputAction: TextInputAction.next,
+            ),
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Twitter'),
+              textInputAction: TextInputAction.next,
+            ),
           ],
         )),
       ),
