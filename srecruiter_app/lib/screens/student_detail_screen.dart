@@ -39,7 +39,9 @@ class StudentDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final studentId = ModalRoute.of(context).settings.arguments as int;
-    final selectedStudent = Provider.of<StudentsProvider>(context, listen: false).findStudentById(studentId);
+    final selectedStudent =
+        Provider.of<StudentsProvider>(context, listen: false)
+            .findStudentById(studentId);
     return Scaffold(
       appBar: AppBar(
         title: Text(selectedStudent.firstName + ' ' + selectedStudent.lastName),

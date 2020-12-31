@@ -8,7 +8,7 @@ import '../screens/student_detail_screen.dart';
 class StudentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final student = Provider.of<StudentModel>(context);
+    final student = Provider.of<StudentModel>(context, listen: false);
     return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(StudentDetailScreen.routeName, arguments: student.id);
@@ -31,27 +31,30 @@ class StudentItem extends StatelessWidget {
                   ),
                 ),
                 title: Text(student.firstName + ' ' + student.lastName),
-                subtitle: Text('Grade: ' + student.grade),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    IconButton(
-                      onPressed: (){
-                        student.toggelFavoriteStatus();
-                      },
-                      icon: Icon(
-                        student.isFavorite ? Icons.favorite : Icons.favorite_border_rounded,
-                        color: Theme.of(context).accentColor,
+                subtitle: Text('Grade: ' + student.grade + '\n' + student.profession),
+                isThreeLine: true,
+                trailing: Consumer<StudentModel>(
+                  builder: (ctx, student, _) => Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      IconButton(
+                        onPressed: (){
+                          student.toggelFavoriteStatus();
+                        },
+                        icon: Icon(
+                          student.isFavorite ? Icons.favorite : Icons.favorite_border_rounded,
+                          color: Theme.of(context).accentColor,
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: null,
-                      icon: Icon(
-                        Icons.restore_from_trash,
-                        color: Theme.of(context).primaryColor,
+                      IconButton(
+                        onPressed: null,
+                        icon: Icon(
+                          Icons.restore_from_trash,
+                          color: Theme.of(context).primaryColor,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 )),
           ],
         ),

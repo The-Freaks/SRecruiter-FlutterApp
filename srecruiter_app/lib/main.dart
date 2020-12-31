@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:srecruiter_app/providers/students_provider.dart';
 
+import './providers/students_provider.dart';
+import './screens/categories_overview_screen.dart';
 import './providers/categories_provider.dart';
 import './screens/login_screen.dart';
-import './screens/tabs_screen.dart';
 import './screens/page_not_found_screen.dart';
 import './screens/student_detail_screen.dart';
 import './screens/category_students_screen.dart';
@@ -19,11 +19,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers:[
-        ChangeNotifierProvider.value(
-          value: CategoriesProvider(),
+        ChangeNotifierProvider(
+          create: (ctx) => CategoriesProvider(),
         ),
-        ChangeNotifierProvider.value(
-          value: StudentsProvider(),
+        ChangeNotifierProvider(
+          create: (ctx) => StudentsProvider(),
         ),
       ],
         child: MaterialApp(
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           initialRoute: '/',
           // default is "/"
           routes: {
-            '/': (ctx) => TabsScreen(),
+            '/': (ctx) => CategoriesOverviewScreen(),
             CategoryStudentsScreen.routeName: (ctx) => CategoryStudentsScreen(),
             StudentDetailScreen.routeName: (ctx) => StudentDetailScreen(),
             PageNotFoundScreen.routeName: (ctx) => PageNotFoundScreen(),

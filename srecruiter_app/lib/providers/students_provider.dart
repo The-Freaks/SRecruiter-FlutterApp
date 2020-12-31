@@ -117,7 +117,7 @@ class StudentsProvider with ChangeNotifier {
       id: 6,
       categoriesId: ['gd'],
       imageUrl:
-      'https://drive.google.com/file/d/1jDnHq_TdZtBV0cqKcJDCXkB2xDSYjgOc/view?usp=sharing',
+      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Shukri',
       lastName: 'Gashi',
       profession: 'Graphic Design',
@@ -139,7 +139,7 @@ class StudentsProvider with ChangeNotifier {
       id: 7,
       categoriesId: ['gd'],
       imageUrl:
-      'https://drive.google.com/file/d/1jDnHq_TdZtBV0cqKcJDCXkB2xDSYjgOc/view?usp=sharing',
+      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Sevdaim',
       lastName: 'Gashi',
       profession: 'Graphic Design',
@@ -161,7 +161,7 @@ class StudentsProvider with ChangeNotifier {
       id: 8,
       categoriesId: ['gd'],
       imageUrl:
-      'https://drive.google.com/file/d/1jDnHq_TdZtBV0cqKcJDCXkB2xDSYjgOc/view?usp=sharing',
+      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Shpresmir',
       lastName: 'Gashi',
       profession: 'Graphic Design',
@@ -183,7 +183,7 @@ class StudentsProvider with ChangeNotifier {
       id: 9,
       categoriesId: ['bm'],
       imageUrl:
-      'https://drive.google.com/file/d/1jDnHq_TdZtBV0cqKcJDCXkB2xDSYjgOc/view?usp=sharing',
+      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Albin',
       lastName: 'Kurti',
       profession: 'Business Management',
@@ -205,7 +205,7 @@ class StudentsProvider with ChangeNotifier {
       id: 10,
       categoriesId: ['bm'],
       imageUrl:
-      'https://drive.google.com/file/d/1jDnHq_TdZtBV0cqKcJDCXkB2xDSYjgOc/view?usp=sharing',
+      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Isa',
       lastName: 'Mustafa',
       profession: 'Business Management',
@@ -227,7 +227,7 @@ class StudentsProvider with ChangeNotifier {
       id: 11,
       categoriesId: ['inf'],
       imageUrl:
-      'https://drive.google.com/file/d/1jDnHq_TdZtBV0cqKcJDCXkB2xDSYjgOc/view?usp=sharing',
+      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Donika',
       lastName: 'Gashi',
       profession: 'Infirmary',
@@ -249,7 +249,7 @@ class StudentsProvider with ChangeNotifier {
       id: 12,
       categoriesId: ['inf'],
       imageUrl:
-      'https://drive.google.com/file/d/1jDnHq_TdZtBV0cqKcJDCXkB2xDSYjgOc/view?usp=sharing',
+      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Shpresa',
       lastName: 'Gashi',
       profession: 'Infirmary',
@@ -271,7 +271,7 @@ class StudentsProvider with ChangeNotifier {
       id: 13,
       categoriesId: ['eng'],
       imageUrl:
-      'https://drive.google.com/file/d/1jDnHq_TdZtBV0cqKcJDCXkB2xDSYjgOc/view?usp=sharing',
+      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Blerta',
       lastName: 'Gashi',
       profession: 'English',
@@ -293,7 +293,7 @@ class StudentsProvider with ChangeNotifier {
       id: 14,
       categoriesId: ['eng'],
       imageUrl:
-      'https://drive.google.com/file/d/1jDnHq_TdZtBV0cqKcJDCXkB2xDSYjgOc/view?usp=sharing',
+      'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Arta',
       lastName: 'Gashi',
       profession: 'English',
@@ -315,6 +315,10 @@ class StudentsProvider with ChangeNotifier {
 
   List<StudentModel> get studentItems {
     return [..._studentItems];
+  }
+
+  List<StudentModel> get favoriteStudent {
+    return _studentItems.where((studItem) => studItem.isFavorite).toList();
   }
 
   StudentModel findStudentById(int id){

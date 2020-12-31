@@ -1,33 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:srecruiter_app/providers/students_provider.dart';
 
-import '../widgets/student_item.dart';
+import '../widgets/category_student_item.dart';
 
-class CategoryStudentsScreen extends StatelessWidget {
+enum FilterOptions {
+  Favorites,
+  All,
+}
+
+class CategoryStudentsScreen extends StatefulWidget {
   static const routeName = "/category-student";
+
+  @override
+  _CategoryStudentsScreenState createState() => _CategoryStudentsScreenState();
+}
+
+class _CategoryStudentsScreenState extends State<CategoryStudentsScreen> {
+  var _showOnlyFavorites = false;
 
   @override
   Widget build(BuildContext context) {
     final routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     final categoryTitle = routeArgs['title'];
-    final categoryId = routeArgs['id'];
-    final categoryStudent = Provider.of<StudentsProvider>(context).studentItems.where((stud) {
-      return stud.categoriesId.contains(categoryId);
-    }).toList();
     return Scaffold(
-        appBar: AppBar(
-          title: Text(categoryTitle),
-        ),
-        body: ListView.builder(
-          itemBuilder: (ctx, index) {
-            return ChangeNotifierProvider.value(
-              value: categoryStudent[index],
-              child: StudentItem(),
-            );
-          },
-          itemCount: categoryStudent.length,
-        ));
+      appBar: AppBar(
+        title: Text(categoryTitle),
+        actions: <Widget>[
+          PopupMenuButton(
+              onSelected: (FilterOptions selectedValue) {
+                    setState(() {
+                      if (selectedValue == FilterOptions.Favorites) {
+                        _showOnlyFavorites = true;
+                      } else {
+                        _showOnlyFavorites = false;
+                      }
+                    });
+                  },
+              icon: Icon(Icons.more_vert),
+              itemBuilder: (_) => [
+                    PopupMenuItem(
+                      child: Text('Favorites only'),
+                      value: FilterOptions.Favorites,
+                    ),
+                    PopupMenuItem(
+                      child: Text('Show All'),
+                      value: FilterOptions.All,
+                    ),
+                  ])
+        ],
+      ),
+      body: CategoryStudentItem(_showOnlyFavorites),
+    );
   }
 }
