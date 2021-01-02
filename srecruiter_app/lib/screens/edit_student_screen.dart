@@ -17,22 +17,25 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
         padding: const EdgeInsets.all(15),
         child: Form(child: ListView(
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'First Name'),
-                    textInputAction: TextInputAction.next,
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      decoration: InputDecoration(labelText: 'First Name'),
+                      textInputAction: TextInputAction.next,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Last Name'),
-                    textInputAction: TextInputAction.next,
+                  SizedBox(width: 10,),
+                  Expanded(
+                    child: TextFormField(
+                      decoration: InputDecoration(labelText: 'Last Name'),
+                      textInputAction: TextInputAction.next,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
 
             TextFormField(
