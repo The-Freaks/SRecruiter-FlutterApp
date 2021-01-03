@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../screens/admin/admin_categories_screen.dart';
 import '../screens/login_screen.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -43,6 +44,13 @@ class MainDrawer extends StatelessWidget {
             Icons.dashboard_rounded,
             () {
               Navigator.of(context).pushReplacementNamed('/');
+            },
+          ),
+          buildListTile(
+            'Manage Students',
+            Icons.edit_off,
+                () {
+              Navigator.of(context).pushReplacementNamed(AdminCategoriesScreen.routeName);
             },
           ),
           SizedBox(

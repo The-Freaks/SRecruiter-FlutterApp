@@ -51,13 +51,6 @@ class _CategoryStudentsScreenState extends State<CategoryStudentsScreen> {
         ],
       ),
       body: CategoryStudentItem(_showOnlyFavorites),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        splashColor: Theme.of(context).primaryColor,
-        onPressed: (){
-          Navigator.of(context).pushNamed(EditStudentScreen.routeName);
-        },
-      ),
     );
   }
 }

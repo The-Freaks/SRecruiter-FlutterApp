@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import './screens/admin/admin_categories_screen.dart';
 import './screens/edit_student_screen.dart';
 import './providers/students_provider.dart';
 import './screens/categories_overview_screen.dart';
@@ -9,6 +10,7 @@ import './screens/login_screen.dart';
 import './screens/page_not_found_screen.dart';
 import './screens/student_detail_screen.dart';
 import './screens/category_students_screen.dart';
+import './screens/admin/admin_category_students_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -51,6 +53,8 @@ class MyApp extends StatelessWidget {
           PageNotFoundScreen.routeName: (ctx) => PageNotFoundScreen(),
           LoginScreen.routeName: (ctx) => LoginScreen(),
           EditStudentScreen.routeName: (ctx) => EditStudentScreen(),
+          AdminCategoriesScreen.routeName: (ctx) => AdminCategoriesScreen(),
+          AdminCategoryStudentsScreen.routeName: (ctx) => AdminCategoryStudentsScreen(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (ctx) => PageNotFoundScreen());

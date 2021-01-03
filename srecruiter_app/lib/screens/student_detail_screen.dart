@@ -45,17 +45,6 @@ class StudentDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(selectedStudent.firstName + ' ' + selectedStudent.lastName),
-        // actions: [
-        //   IconButton(
-        //     onPressed: () {
-        //       selectedStudent.toggelFavoriteStatus();
-        //       print(selectedStudent.isFavorite);
-        //     },
-        //     icon: Icon(
-        //       selectedStudent.isFavorite ? Icons.favorite : Icons.favorite_border_rounded,
-        //     ),
-        //   ),
-        // ],
       ),
       body: Center(
         child: ListView(
