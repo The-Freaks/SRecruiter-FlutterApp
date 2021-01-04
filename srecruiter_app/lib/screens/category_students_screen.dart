@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/edit_student_screen.dart';
+import 'admin/edit_student_screen.dart';
 import '../widgets/category_student_item.dart';
 
 enum FilterOptions {

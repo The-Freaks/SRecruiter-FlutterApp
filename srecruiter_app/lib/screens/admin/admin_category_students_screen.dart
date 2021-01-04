@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/admin/admin_category_student_item.dart';
-import '../../screens/edit_student_screen.dart';
+import 'edit_student_screen.dart';
 
 enum FilterOptions {
   Favorites,
@@ -14,20 +14,18 @@ class AdminCategoryStudentsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final routeArgs =
-    ModalRoute.of(context).settings.arguments as Map<String, String>;
+        ModalRoute.of(context).settings.arguments as Map<String, String>;
     final categoryTitle = routeArgs['title'];
     return Scaffold(
       appBar: AppBar(
         title: Text(categoryTitle),
-        actions: <Widget>[
-
-        ],
+        actions: <Widget>[],
       ),
       body: AdminCategoryStudentItem(),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         splashColor: Theme.of(context).primaryColor,
-        onPressed: (){
+        onPressed: () {
           Navigator.of(context).pushNamed(EditStudentScreen.routeName);
         },
       ),

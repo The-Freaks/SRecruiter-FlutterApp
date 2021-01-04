@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import './screens/admin/admin_categories_screen.dart';
-import './screens/edit_student_screen.dart';
+import 'screens/admin/edit_student_screen.dart';
 import './providers/students_provider.dart';
 import './screens/categories_overview_screen.dart';
 import './providers/categories_provider.dart';

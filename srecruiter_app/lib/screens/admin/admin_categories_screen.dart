@@ -4,6 +4,7 @@ import 'package:srecruiter_app/widgets/main_drawer.dart';
 
 class AdminCategoriesScreen extends StatelessWidget {
   static const routeName = '/admin-categories';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
