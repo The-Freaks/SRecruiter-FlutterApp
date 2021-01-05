@@ -5,7 +5,7 @@ import '../models/student_model.dart';
 class StudentsProvider with ChangeNotifier {
   List<StudentModel> _studentItems = [
     StudentModel(
-      id: 1,
+      id: '1',
       categoriesId: ['se'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/13164402_1222684387764150_6477654281753606023_n.jpg?_nc_cat=107&ccb=2&_nc_sid=09cbfe&_nc_ohc=0quF60pbwGkAX8H0rgV&_nc_ht=scontent-mxp1-2.xx&oh=bfc1c7fba9e9886ee34f45e2069ccf44&oe=600BD880',
@@ -26,7 +26,7 @@ class StudentsProvider with ChangeNotifier {
       twitter: 'niityyy',
     ),
     StudentModel(
-      id: 2,
+      id: '2',
       categoriesId: ['se'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/32737294_365232333985978_5537160310034530304_n.jpg?_nc_cat=101&ccb=2&_nc_sid=09cbfe&_nc_ohc=M3ChFfQcresAX9trApG&_nc_ht=scontent-mxp1-2.xx&oh=f18ec964cf26455e8da2cb2690d7ee7a&oe=600D0DF3',
@@ -48,7 +48,7 @@ class StudentsProvider with ChangeNotifier {
       isPromoted: false,
     ),
     StudentModel(
-      id: 3,
+      id: '3',
       categoriesId: ['se'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/82281086_624218655015356_4381719446331326464_n.jpg?_nc_cat=100&ccb=2&_nc_sid=09cbfe&_nc_ohc=iq8Mv5fXRssAX__7pO7&_nc_ht=scontent-mxp1-2.xx&oh=827739925af0a3c60affb1bbca89f062&oe=600ED147',
@@ -70,7 +70,7 @@ class StudentsProvider with ChangeNotifier {
       isPromoted: false,
     ),
     StudentModel(
-      id: 4,
+      id: '4',
       categoriesId: ['se'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
@@ -92,7 +92,7 @@ class StudentsProvider with ChangeNotifier {
       isPromoted: false,
     ),
     StudentModel(
-      id: 5,
+      id: '5',
       categoriesId: ['gd'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
@@ -114,7 +114,7 @@ class StudentsProvider with ChangeNotifier {
       isPromoted: false,
     ),
     StudentModel(
-      id: 6,
+      id: '6',
       categoriesId: ['gd'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
@@ -136,7 +136,7 @@ class StudentsProvider with ChangeNotifier {
       isPromoted: false,
     ),
     StudentModel(
-      id: 7,
+      id: '7',
       categoriesId: ['gd'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
@@ -158,7 +158,7 @@ class StudentsProvider with ChangeNotifier {
       isPromoted: false,
     ),
     StudentModel(
-      id: 8,
+      id: '8',
       categoriesId: ['gd'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
@@ -180,7 +180,7 @@ class StudentsProvider with ChangeNotifier {
       isPromoted: false,
     ),
     StudentModel(
-      id: 9,
+      id: '9',
       categoriesId: ['bm'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
@@ -202,7 +202,7 @@ class StudentsProvider with ChangeNotifier {
       isPromoted: false,
     ),
     StudentModel(
-      id: 10,
+      id: '10',
       categoriesId: ['bm'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
@@ -224,7 +224,7 @@ class StudentsProvider with ChangeNotifier {
       isPromoted: false,
     ),
     StudentModel(
-      id: 11,
+      id: '11',
       categoriesId: ['inf'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
@@ -246,7 +246,7 @@ class StudentsProvider with ChangeNotifier {
       isPromoted: false,
     ),
     StudentModel(
-      id: 12,
+      id: '12',
       categoriesId: ['inf'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
@@ -268,7 +268,7 @@ class StudentsProvider with ChangeNotifier {
       isPromoted: false,
     ),
     StudentModel(
-      id: 13,
+      id: '13',
       categoriesId: ['eng'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
@@ -290,7 +290,7 @@ class StudentsProvider with ChangeNotifier {
       isPromoted: false,
     ),
     StudentModel(
-      id: 14,
+      id: '14',
       categoriesId: ['eng'],
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
@@ -321,7 +321,28 @@ class StudentsProvider with ChangeNotifier {
     return _studentItems.where((studItem) => studItem.isFavorite).toList();
   }
 
-  StudentModel findStudentById(int id) {
+  StudentModel findStudentById(String id) {
     return studentItems.firstWhere((stud) => stud.id == id);
+  }
+
+  void addStudent(StudentModel student){
+    final newStudent = StudentModel(
+        id: DateTime.now().toString(),
+        categoriesId: student.categoriesId,
+        imageUrl: student.imageUrl,
+        firstName: student.firstName,
+        lastName: student.lastName,
+        profession: student.profession,
+        grade: student.grade,
+        email: student.email,
+        phoneNumber: student.phoneNumber,
+        biography: student.biography,
+        instagram: student.instagram,
+        facebook: student.facebook,
+        linkedIn: student.linkedIn,
+        twitter: student.twitter,
+    );
+    _studentItems.add(newStudent);
+    notifyListeners();
   }
 }

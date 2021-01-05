@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 class StudentModel with ChangeNotifier {
-  final double id;
+  final String id;
   final List<String> categoriesId;
   final String imageUrl;
   final String firstName;

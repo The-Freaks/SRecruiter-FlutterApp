@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../models/student_model.dart';
+import '../../providers/students_provider.dart';
 
 class EditStudentScreen extends StatefulWidget {
   static const routeName = '/edit-student';
@@ -87,18 +89,8 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
       return;
     }
     _formKey.currentState.save();
-    print(_editedStudent.firstName);
-    print(_editedStudent.lastName);
-    print(_editedStudent.categoriesId);
-    print(_editedStudent.profession);
-    print(_editedStudent.email);
-    print(_editedStudent.phoneNumber);
-    print(_editedStudent.biography);
-    print(_editedStudent.instagram);
-    print(_editedStudent.facebook);
-    print(_editedStudent.linkedIn);
-    print(_editedStudent.twitter);
-    print(_editedStudent.imageUrl);
+    Provider.of<StudentsProvider>(context, listen: false).addStudent(_editedStudent);
+    Navigator.of(context).pop();
   }
 
   @override
