@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../models/student_model.dart';
+
 class EditStudentScreen extends StatefulWidget {
   static const routeName = '/edit-student';
 
@@ -21,6 +23,23 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
   final _twitterFocusNode = FocusNode();
   final _imageUrlFocusNode = FocusNode();
   final _imageUrlController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  var _editedStudent = StudentModel(
+    id: null,
+    categoriesId: [''],
+    imageUrl: '',
+    firstName: '',
+    lastName: '',
+    profession: '',
+    grade: '',
+    email: '',
+    phoneNumber: '',
+    biography: '',
+    instagram: '',
+    facebook: '',
+    linkedIn: '',
+    twitter: '',
+  );
 
   @override
   void initState() {
@@ -44,12 +63,42 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
     super.dispose();
   }
 
-  void _updateImageUrl(){
-    if(!_imageUrlFocusNode.hasFocus){
-      setState(() {
-
-      });
+  String _socialMedia(String value){
+    String pattern = r'(^[a-zA-Z0-9]*$)';
+    RegExp regExp = new RegExp(pattern);
+    if (value.length == 0) {
+      return 'Please enter a username';
     }
+    else if (!regExp.hasMatch(value)) {
+      return 'Please enter a valid username';
+    }
+    return null;
+  }
+
+  void _updateImageUrl() {
+    if (!_imageUrlFocusNode.hasFocus) {
+      setState(() {});
+    }
+  }
+
+  void _saveForm() {
+    final _isValid = _formKey.currentState.validate();
+    if(!_isValid){
+      return;
+    }
+    _formKey.currentState.save();
+    print(_editedStudent.firstName);
+    print(_editedStudent.lastName);
+    print(_editedStudent.categoriesId);
+    print(_editedStudent.profession);
+    print(_editedStudent.email);
+    print(_editedStudent.phoneNumber);
+    print(_editedStudent.biography);
+    print(_editedStudent.instagram);
+    print(_editedStudent.facebook);
+    print(_editedStudent.linkedIn);
+    print(_editedStudent.twitter);
+    print(_editedStudent.imageUrl);
   }
 
   @override
@@ -57,231 +106,582 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit student'),
+        actions: [
+          IconButton(icon: Icon(Icons.save), onPressed: _saveForm)
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Form(
-            child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'First Name'),
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.name,
-                    onFieldSubmitted: (_) {
-                      FocusScope.of(context).requestFocus(_lastNameFocusNode);
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Last Name'),
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.name,
-                    focusNode: _lastNameFocusNode,
-                    onFieldSubmitted: (_) {
-                      FocusScope.of(context).requestFocus(_professionFocusNode);
-                    },
-                  ),
-                ),
-              ],
-            ),
-            Row(
+            key: _formKey,
+            child: ListView(
               children: <Widget>[
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Profession'),
-                    textInputAction: TextInputAction.next,
-                    focusNode: _professionFocusNode,
-                    keyboardType: TextInputType.text,
-                    onFieldSubmitted: (_) {
-                      FocusScope.of(context).requestFocus(_gradeFocusNode);
-                    },
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: 'First Name'),
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.name,
+                        onFieldSubmitted: (_) {
+                          FocusScope.of(context)
+                              .requestFocus(_lastNameFocusNode);
+                        },
+                        validator: (value){
+                          String pattern = r'(^[a-zA-Z]*$)';
+                          RegExp regExp = new RegExp(pattern);
+                          if (value.length == 0) {
+                            return 'Please enter a first name';
+                          }
+                          else if (!regExp.hasMatch(value)) {
+                            return 'Please enter a valid first name';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _editedStudent = StudentModel(
+                              id: null,
+                              categoriesId: _editedStudent.categoriesId,
+                              imageUrl: _editedStudent.imageUrl,
+                              firstName: value,
+                              lastName: _editedStudent.lastName,
+                              profession: _editedStudent.profession,
+                              grade: _editedStudent.grade,
+                              email: _editedStudent.email,
+                              phoneNumber: _editedStudent.phoneNumber,
+                              biography: _editedStudent.biography,
+                              instagram: _editedStudent.instagram,
+                              facebook: _editedStudent.facebook,
+                              linkedIn: _editedStudent.linkedIn,
+                              twitter: _editedStudent.twitter,
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: 'Last Name'),
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.name,
+                        focusNode: _lastNameFocusNode,
+                        onFieldSubmitted: (_) {
+                          FocusScope.of(context)
+                              .requestFocus(_professionFocusNode);
+                        },
+                        validator: (value){
+                          String pattern = r'(^[a-zA-Z]*$)';
+                          RegExp regExp = new RegExp(pattern);
+                          if (value.length == 0) {
+                            return 'Please enter a last name';
+                          }
+                          else if (!regExp.hasMatch(value)) {
+                            return 'Please enter a valid last name';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _editedStudent = StudentModel(
+                            id: null,
+                            categoriesId: _editedStudent.categoriesId,
+                            imageUrl: _editedStudent.imageUrl,
+                            firstName: _editedStudent.firstName,
+                            lastName: value,
+                            profession: _editedStudent.profession,
+                            grade: _editedStudent.grade,
+                            email: _editedStudent.email,
+                            phoneNumber: _editedStudent.phoneNumber,
+                            biography: _editedStudent.biography,
+                            instagram: _editedStudent.instagram,
+                            facebook: _editedStudent.facebook,
+                            linkedIn: _editedStudent.linkedIn,
+                            twitter: _editedStudent.twitter,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  width: 10,
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: 'Profession'),
+                        textInputAction: TextInputAction.next,
+                        focusNode: _professionFocusNode,
+                        keyboardType: TextInputType.text,
+                        onFieldSubmitted: (_) {
+                          FocusScope.of(context).requestFocus(_gradeFocusNode);
+                        },
+                        validator: (value){
+                          String pattern = r'(^[a-zA-Z ]*$)';
+                          RegExp regExp = new RegExp(pattern);
+                          if (value.length == 0) {
+                            return 'Please enter a profession';
+                          }
+                          else if (!regExp.hasMatch(value)) {
+                            return 'Please enter a valid profession';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _editedStudent = StudentModel(
+                            id: null,
+                            categoriesId: _editedStudent.categoriesId,
+                            imageUrl: _editedStudent.imageUrl,
+                            firstName: _editedStudent.firstName,
+                            lastName: _editedStudent.lastName,
+                            profession: value,
+                            grade: _editedStudent.grade,
+                            email: _editedStudent.email,
+                            phoneNumber: _editedStudent.phoneNumber,
+                            biography: _editedStudent.biography,
+                            instagram: _editedStudent.instagram,
+                            facebook: _editedStudent.facebook,
+                            linkedIn: _editedStudent.linkedIn,
+                            twitter: _editedStudent.twitter,
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: 'Grade'),
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.number,
+                        focusNode: _gradeFocusNode,
+                        onFieldSubmitted: (_) {
+                          FocusScope.of(context).requestFocus(_emailFocusNode);
+                        },
+                        validator: (value){
+                          String pattern = r'(^[0-9.]*$)';
+                          RegExp regExp = new RegExp(pattern);
+                          if (value.length == 0) {
+                            return 'Please enter a grade';
+                          }
+                          if(double.tryParse(value) < 5){
+                            return 'Number 5 is the min grade!';
+                          }
+                          if(double.tryParse(value) > 10){
+                            return 'Number 10 is the max grade!';
+                          }
+                          else if (!regExp.hasMatch(value)) {
+                            return 'Please enter a valid grade';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _editedStudent = StudentModel(
+                            id: null,
+                            categoriesId: _editedStudent.categoriesId,
+                            imageUrl: _editedStudent.imageUrl,
+                            firstName: _editedStudent.firstName,
+                            lastName: _editedStudent.lastName,
+                            profession: _editedStudent.profession,
+                            grade: value,
+                            email: _editedStudent.email,
+                            phoneNumber: _editedStudent.phoneNumber,
+                            biography: _editedStudent.biography,
+                            instagram: _editedStudent.instagram,
+                            facebook: _editedStudent.facebook,
+                            linkedIn: _editedStudent.linkedIn,
+                            twitter: _editedStudent.twitter,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Grade'),
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.number,
-                    focusNode: _gradeFocusNode,
-                    onFieldSubmitted: (_) {
-                      FocusScope.of(context).requestFocus(_emailFocusNode);
-                    },
-                  ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: 'Email'),
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.emailAddress,
+                        focusNode: _emailFocusNode,
+                        onFieldSubmitted: (_) {
+                          FocusScope.of(context).requestFocus(_numberFocusNode);
+                        },
+                        validator: (value){
+                          Pattern pattern =
+                              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                          RegExp regex = new RegExp(pattern);
+                          if (!regex.hasMatch(value))
+                            return 'Enter Valid Email';
+                          else
+                            return null;
+                        },
+                        onSaved: (value) {
+                          _editedStudent = StudentModel(
+                            id: null,
+                            categoriesId: _editedStudent.categoriesId,
+                            imageUrl: _editedStudent.imageUrl,
+                            firstName: _editedStudent.firstName,
+                            lastName: _editedStudent.lastName,
+                            profession: _editedStudent.profession,
+                            grade: _editedStudent.grade,
+                            email: value,
+                            phoneNumber: _editedStudent.phoneNumber,
+                            biography: _editedStudent.biography,
+                            instagram: _editedStudent.instagram,
+                            facebook: _editedStudent.facebook,
+                            linkedIn: _editedStudent.linkedIn,
+                            twitter: _editedStudent.twitter,
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: 'Number'),
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.phone,
+                        focusNode: _numberFocusNode,
+                        onFieldSubmitted: (_) {
+                          FocusScope.of(context)
+                              .requestFocus(_categoryIdFocusNode);
+                        },
+                        validator: (value){
+                          String pattern = r'^\+?383[0-9]{8}$';
+                          RegExp regExp = new RegExp(pattern);
+                          if (value.length == 0) {
+                            return 'Please enter mobile number';
+                          }
+                          else if (!regExp.hasMatch(value)) {
+                            return 'Please enter valid mobile number';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _editedStudent = StudentModel(
+                            id: null,
+                            categoriesId: _editedStudent.categoriesId,
+                            imageUrl: _editedStudent.imageUrl,
+                            firstName: _editedStudent.firstName,
+                            lastName: _editedStudent.lastName,
+                            profession: _editedStudent.profession,
+                            grade: _editedStudent.grade,
+                            email: _editedStudent.email,
+                            phoneNumber: value,
+                            biography: _editedStudent.biography,
+                            instagram: _editedStudent.instagram,
+                            facebook: _editedStudent.facebook,
+                            linkedIn: _editedStudent.linkedIn,
+                            twitter: _editedStudent.twitter,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Categories'),
+                  textInputAction: TextInputAction.next,
+                  focusNode: _categoryIdFocusNode,
+                  onFieldSubmitted: (_) {
+                    FocusScope.of(context).requestFocus(_biographyFocusNode);
+                  },
+                  validator: (value){
+                    if(value.isEmpty){
+                      return 'Please enter a category id!';
+                    }
+                    else{
+                      return null;
+                    }
+                  },
+                  onSaved: (value) {
+                    _editedStudent = StudentModel(
+                      id: null,
+                      categoriesId: [value],
+                      imageUrl: _editedStudent.imageUrl,
+                      firstName: _editedStudent.firstName,
+                      lastName: _editedStudent.lastName,
+                      profession: _editedStudent.profession,
+                      grade: _editedStudent.grade,
+                      email: _editedStudent.email,
+                      phoneNumber: _editedStudent.phoneNumber,
+                      biography: _editedStudent.biography,
+                      instagram: _editedStudent.instagram,
+                      facebook: _editedStudent.facebook,
+                      linkedIn: _editedStudent.linkedIn,
+                      twitter: _editedStudent.twitter,
+                    );
+                  },
+                ),
+                TextFormField(
+                  maxLines: 2,
+                  decoration: InputDecoration(labelText: 'Biography'),
+                  keyboardType: TextInputType.multiline,
+                  focusNode: _biographyFocusNode,
+                  validator: (value){
+                    if(value.isEmpty){
+                      return 'Please enter a bio!';
+                    }
+                    if(value.length < 10){
+                      return 'Should be at least 10 characters long.';
+                    }
+                    else{
+                      return null;
+                    }
+                  },
+                  onSaved: (value) {
+                    _editedStudent = StudentModel(
+                      categoriesId: _editedStudent.categoriesId,
+                      imageUrl: _editedStudent.imageUrl,
+                      firstName: _editedStudent.firstName,
+                      lastName: _editedStudent.lastName,
+                      profession: _editedStudent.profession,
+                      grade: _editedStudent.grade,
+                      email: _editedStudent.email,
+                      phoneNumber: _editedStudent.phoneNumber,
+                      biography: value,
+                      instagram: _editedStudent.instagram,
+                      facebook: _editedStudent.facebook,
+                      linkedIn: _editedStudent.linkedIn,
+                      twitter: _editedStudent.twitter,
+                    );
+                  },
+                ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: 'Instagram'),
+                        textInputAction: TextInputAction.next,
+                        focusNode: _instagramFocusNode,
+                        onFieldSubmitted: (_) {
+                          FocusScope.of(context)
+                              .requestFocus(_facebookFocusNode);
+                        },
+                        validator: _socialMedia,
+                        onSaved: (value) {
+                          _editedStudent = StudentModel(
+                            id: null,
+                            categoriesId: _editedStudent.categoriesId,
+                            imageUrl: _editedStudent.imageUrl,
+                            firstName: _editedStudent.firstName,
+                            lastName: _editedStudent.lastName,
+                            profession: _editedStudent.profession,
+                            grade: _editedStudent.grade,
+                            email: _editedStudent.email,
+                            phoneNumber: _editedStudent.phoneNumber,
+                            biography: _editedStudent.biography,
+                            instagram: value,
+                            facebook: _editedStudent.facebook,
+                            linkedIn: _editedStudent.linkedIn,
+                            twitter: _editedStudent.twitter,
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: 'Facebook'),
+                        textInputAction: TextInputAction.next,
+                        focusNode: _facebookFocusNode,
+                        onFieldSubmitted: (_) {
+                          FocusScope.of(context)
+                              .requestFocus(_linkedInFocusNode);
+                        },
+                        validator: _socialMedia,
+                        onSaved: (value) {
+                          _editedStudent = StudentModel(
+                            id: null,
+                            categoriesId: _editedStudent.categoriesId,
+                            imageUrl: _editedStudent.imageUrl,
+                            firstName: _editedStudent.firstName,
+                            lastName: _editedStudent.lastName,
+                            profession: _editedStudent.profession,
+                            grade: _editedStudent.grade,
+                            email: _editedStudent.email,
+                            phoneNumber: _editedStudent.phoneNumber,
+                            biography: _editedStudent.biography,
+                            instagram: _editedStudent.instagram,
+                            facebook: value,
+                            linkedIn: _editedStudent.linkedIn,
+                            twitter: _editedStudent.twitter,
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: 'LinkedIn'),
+                        textInputAction: TextInputAction.next,
+                        focusNode: _linkedInFocusNode,
+                        onFieldSubmitted: (_) {
+                          FocusScope.of(context)
+                              .requestFocus(_twitterFocusNode);
+                        },
+                        validator: _socialMedia,
+                        onSaved: (value) {
+                          _editedStudent = StudentModel(
+                            id: null,
+                            categoriesId: _editedStudent.categoriesId,
+                            imageUrl: _editedStudent.imageUrl,
+                            firstName: _editedStudent.firstName,
+                            lastName: _editedStudent.lastName,
+                            profession: _editedStudent.profession,
+                            grade: _editedStudent.grade,
+                            email: _editedStudent.email,
+                            phoneNumber: _editedStudent.phoneNumber,
+                            biography: _editedStudent.biography,
+                            instagram: _editedStudent.instagram,
+                            facebook: _editedStudent.facebook,
+                            linkedIn: value,
+                            twitter: _editedStudent.twitter,
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: 'Twitter'),
+                        textInputAction: TextInputAction.next,
+                        focusNode: _twitterFocusNode,
+                        onFieldSubmitted: (_) {
+                          FocusScope.of(context)
+                              .requestFocus(_imageUrlFocusNode);
+                        },
+                        validator: _socialMedia,
+                        onSaved: (value) {
+                          _editedStudent = StudentModel(
+                            id: null,
+                            categoriesId: _editedStudent.categoriesId,
+                            imageUrl: _editedStudent.imageUrl,
+                            firstName: _editedStudent.firstName,
+                            lastName: _editedStudent.lastName,
+                            profession: _editedStudent.profession,
+                            grade: _editedStudent.grade,
+                            email: _editedStudent.email,
+                            phoneNumber: _editedStudent.phoneNumber,
+                            biography: _editedStudent.biography,
+                            instagram: _editedStudent.instagram,
+                            facebook: _editedStudent.facebook,
+                            linkedIn: _editedStudent.linkedIn,
+                            twitter: value,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(labelText: 'ImageUrl'),
+                        textInputAction: TextInputAction.done,
+                        keyboardType: TextInputType.url,
+                        focusNode: _imageUrlFocusNode,
+                        controller: _imageUrlController,
+                        onFieldSubmitted: (_){
+                          _saveForm();
+                        },
+                        validator: (value){
+                          String pattern = r'^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)$';
+                          RegExp regExp = new RegExp(pattern);
+                          if (value.length == 0) {
+                            return 'Please enter mobile number';
+                          }
+                          else if (!regExp.hasMatch(value)) {
+                            return 'Please enter valid mobile number';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) {
+                          _editedStudent = StudentModel(
+                            id: null,
+                            categoriesId: _editedStudent.categoriesId,
+                            imageUrl: value,
+                            firstName: _editedStudent.firstName,
+                            lastName: _editedStudent.lastName,
+                            profession: _editedStudent.profession,
+                            grade: _editedStudent.grade,
+                            email: _editedStudent.email,
+                            phoneNumber: _editedStudent.phoneNumber,
+                            biography: _editedStudent.biography,
+                            instagram: _editedStudent.instagram,
+                            facebook: _editedStudent.facebook,
+                            linkedIn: _editedStudent.linkedIn,
+                            twitter: _editedStudent.twitter,
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 100,
+                        width: double.infinity,
+                        margin: const EdgeInsets.only(top: 10),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                          width: 1,
+                          color: Colors.grey,
+                        )),
+                        child: _imageUrlController.text.isEmpty
+                            ? Center(
+                                child: Text(
+                                  'Image Url',
+                                ),
+                              )
+                            : FittedBox(
+                                child: Image.network(
+                                  _imageUrlController.text,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                      ),
+                    ),
+                  ],
+                ),
+                // Container(
+                //   height: 100,
+                //   width: double.infinity,
+                //   margin: const EdgeInsets.only(top: 10),
+                //   decoration: BoxDecoration(
+                //       border: Border.all(
+                //         width: 1,
+                //         color: Colors.grey,
+                //       )),
+                //   child: _imageUrlController.text.isEmpty
+                //       ? Center(
+                //     child: Text(
+                //       'Image Url',
+                //     ),
+                //   )
+                //       : FittedBox(
+                //     child: Image.network(
+                //       _imageUrlController.text,
+                //       fit: BoxFit.cover,
+                //     ),
+                //   ),
+                // ),
               ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Email'),
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.emailAddress,
-                    focusNode: _emailFocusNode,
-                    onFieldSubmitted: (_) {
-                      FocusScope.of(context).requestFocus(_numberFocusNode);
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Number'),
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.phone,
-                    focusNode: _numberFocusNode,
-                    onFieldSubmitted: (_) {
-                      FocusScope.of(context).requestFocus(_categoryIdFocusNode);
-                    },
-                  ),
-                ),
-              ],
-            ),
-            TextFormField(
-              decoration: InputDecoration(labelText: 'Categories'),
-              textInputAction: TextInputAction.next,
-              focusNode: _categoryIdFocusNode,
-              onFieldSubmitted: (_) {
-                FocusScope.of(context).requestFocus(_biographyFocusNode);
-              },
-            ),
-            TextFormField(
-              maxLines: 2,
-              decoration: InputDecoration(labelText: 'Biography'),
-              keyboardType: TextInputType.multiline,
-              focusNode: _biographyFocusNode,
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Instagram'),
-                    textInputAction: TextInputAction.next,
-                    focusNode: _instagramFocusNode,
-                    onFieldSubmitted: (_) {
-                      FocusScope.of(context).requestFocus(_facebookFocusNode);
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Facebook'),
-                    textInputAction: TextInputAction.next,
-                    focusNode: _facebookFocusNode,
-                    onFieldSubmitted: (_) {
-                      FocusScope.of(context).requestFocus(_linkedInFocusNode);
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'LinkedIn'),
-                    textInputAction: TextInputAction.next,
-                    focusNode: _linkedInFocusNode,
-                    onFieldSubmitted: (_) {
-                      FocusScope.of(context).requestFocus(_twitterFocusNode);
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Twitter'),
-                    textInputAction: TextInputAction.next,
-                    focusNode: _twitterFocusNode,
-                    onFieldSubmitted: (_) {
-                      FocusScope.of(context).requestFocus(_imageUrlFocusNode);
-                    },
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'ImageUrl'),
-                    textInputAction: TextInputAction.done,
-                    keyboardType: TextInputType.url,
-                    focusNode: _imageUrlFocusNode,
-                    controller: _imageUrlController,
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: Container(
-                    height: 100,
-                    width: double.infinity,
-                    margin: const EdgeInsets.only(top: 10),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                      width: 1,
-                      color: Colors.grey,
-                    )),
-                    child: _imageUrlController.text.isEmpty
-                        ? Center(
-                          child: Text(
-                            'Image Url',
-                          ),
-                        )
-                        : FittedBox(
-                            child: Image.network(
-                              _imageUrlController.text,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                  ),
-                ),
-              ],
-            ),
-            // Container(
-            //   height: 100,
-            //   width: double.infinity,
-            //   margin: const EdgeInsets.only(top: 10),
-            //   decoration: BoxDecoration(
-            //       border: Border.all(
-            //         width: 1,
-            //         color: Colors.grey,
-            //       )),
-            //   child: _imageUrlController.text.isEmpty
-            //       ? Center(
-            //     child: Text(
-            //       'Image Url',
-            //     ),
-            //   )
-            //       : FittedBox(
-            //     child: Image.network(
-            //       _imageUrlController.text,
-            //       fit: BoxFit.cover,
-            //     ),
-            //   ),
-            // ),
-          ],
-        )),
+            )),
       ),
     );
   }
