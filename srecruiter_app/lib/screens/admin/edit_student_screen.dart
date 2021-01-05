@@ -28,7 +28,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
   final _formKey = GlobalKey<FormState>();
   var _editedStudent = StudentModel(
     id: null,
-    categoriesId: [''],
+    categoriesId: '',
     imageUrl: '',
     firstName: '',
     lastName: '',
@@ -42,11 +42,58 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
     linkedIn: '',
     twitter: '',
   );
+  var _initialValues = {
+    'id': '',
+    'categoriesId': '',
+    'imageUrl': '',
+    'firstName': '',
+    'lastName': '',
+    'profession': '',
+    'grade': '',
+    'email': '',
+    'phoneNumber': '',
+    'biography': '',
+    'instagram': '',
+    'facebook': '',
+    'linkedIn': '',
+    'twitter': '',
+  };
 
   @override
   void initState() {
     _imageUrlFocusNode.addListener(_updateImageUrl);
     super.initState();
+  }
+
+  var _isInit = true;
+
+  @override
+  void didChangeDependencies() {
+    if(_isInit){
+      final studentId = ModalRoute.of(context).settings.arguments as String;
+      if(studentId != null){
+        _editedStudent = Provider.of<StudentsProvider>(context).findStudentById(studentId);
+        _initialValues = {
+          'id': _editedStudent.id,
+          'categoriesId': _editedStudent.categoriesId,
+          // 'imageUrl': _editedStudent.imageUrl,
+          'firstName': _editedStudent.firstName,
+          'lastName': _editedStudent.lastName,
+          'profession': _editedStudent.profession,
+          'grade': _editedStudent.grade,
+          'email': _editedStudent.email,
+          'phoneNumber': _editedStudent.phoneNumber,
+          'biography': _editedStudent.biography,
+          'instagram': _editedStudent.instagram,
+          'facebook': _editedStudent.facebook,
+          'linkedIn': _editedStudent.linkedIn,
+          'twitter': _editedStudent.twitter,
+        };
+        _imageUrlController.text = _editedStudent.imageUrl;
+      }
+    }
+    super.didChangeDependencies();
+    _isInit = false;
   }
 
   @override
@@ -66,7 +113,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
   }
 
   String _socialMedia(String value){
-    String pattern = r'(^[a-zA-Z0-9]*$)';
+    String pattern = r'(^[a-zA-Z0-9.]*$)';
     RegExp regExp = new RegExp(pattern);
     if (value.length == 0) {
       return 'Please enter a username';
@@ -89,7 +136,12 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
       return;
     }
     _formKey.currentState.save();
-    Provider.of<StudentsProvider>(context, listen: false).addStudent(_editedStudent);
+    if(_editedStudent.id != null){
+      Provider.of<StudentsProvider>(context, listen: false).updateStudent(_editedStudent.id, _editedStudent);
+    }
+    else{
+      Provider.of<StudentsProvider>(context, listen: false).addStudent(_editedStudent);
+    }
     Navigator.of(context).pop();
   }
 
@@ -113,6 +165,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                   children: [
                     Expanded(
                       child: TextFormField(
+                        initialValue: _initialValues['firstName'],
                         decoration: InputDecoration(labelText: 'First Name'),
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.name,
@@ -133,7 +186,8 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         },
                         onSaved: (value) {
                           _editedStudent = StudentModel(
-                              id: null,
+                              id: _editedStudent.id,
+                              isFavorite: _editedStudent.isFavorite,
                               categoriesId: _editedStudent.categoriesId,
                               imageUrl: _editedStudent.imageUrl,
                               firstName: value,
@@ -156,6 +210,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        initialValue: _initialValues['lastName'],
                         decoration: InputDecoration(labelText: 'Last Name'),
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.name,
@@ -177,7 +232,8 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         },
                         onSaved: (value) {
                           _editedStudent = StudentModel(
-                            id: null,
+                            id: _editedStudent.id,
+                            isFavorite: _editedStudent.isFavorite,
                             categoriesId: _editedStudent.categoriesId,
                             imageUrl: _editedStudent.imageUrl,
                             firstName: _editedStudent.firstName,
@@ -201,6 +257,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                   children: <Widget>[
                     Expanded(
                       child: TextFormField(
+                        initialValue: _initialValues['profession'],
                         decoration: InputDecoration(labelText: 'Profession'),
                         textInputAction: TextInputAction.next,
                         focusNode: _professionFocusNode,
@@ -221,7 +278,8 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         },
                         onSaved: (value) {
                           _editedStudent = StudentModel(
-                            id: null,
+                            id: _editedStudent.id,
+                            isFavorite: _editedStudent.isFavorite,
                             categoriesId: _editedStudent.categoriesId,
                             imageUrl: _editedStudent.imageUrl,
                             firstName: _editedStudent.firstName,
@@ -244,6 +302,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        initialValue: _initialValues['grade'],
                         decoration: InputDecoration(labelText: 'Grade'),
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.number,
@@ -270,7 +329,8 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         },
                         onSaved: (value) {
                           _editedStudent = StudentModel(
-                            id: null,
+                            id: _editedStudent.id,
+                            isFavorite: _editedStudent.isFavorite,
                             categoriesId: _editedStudent.categoriesId,
                             imageUrl: _editedStudent.imageUrl,
                             firstName: _editedStudent.firstName,
@@ -294,6 +354,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                   children: <Widget>[
                     Expanded(
                       child: TextFormField(
+                        initialValue: _initialValues['email'],
                         decoration: InputDecoration(labelText: 'Email'),
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.emailAddress,
@@ -312,7 +373,8 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         },
                         onSaved: (value) {
                           _editedStudent = StudentModel(
-                            id: null,
+                            id: _editedStudent.id,
+                            isFavorite: _editedStudent.isFavorite,
                             categoriesId: _editedStudent.categoriesId,
                             imageUrl: _editedStudent.imageUrl,
                             firstName: _editedStudent.firstName,
@@ -335,6 +397,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        initialValue: _initialValues['phoneNumber'],
                         decoration: InputDecoration(labelText: 'Number'),
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.phone,
@@ -356,7 +419,8 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         },
                         onSaved: (value) {
                           _editedStudent = StudentModel(
-                            id: null,
+                            id: _editedStudent.id,
+                            isFavorite: _editedStudent.isFavorite,
                             categoriesId: _editedStudent.categoriesId,
                             imageUrl: _editedStudent.imageUrl,
                             firstName: _editedStudent.firstName,
@@ -377,6 +441,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                   ],
                 ),
                 TextFormField(
+                  initialValue: _initialValues['categoriesId'],
                   decoration: InputDecoration(labelText: 'Categories'),
                   textInputAction: TextInputAction.next,
                   focusNode: _categoryIdFocusNode,
@@ -393,8 +458,9 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                   },
                   onSaved: (value) {
                     _editedStudent = StudentModel(
-                      id: null,
-                      categoriesId: [value],
+                      id: _editedStudent.id,
+                      isFavorite: _editedStudent.isFavorite,
+                      categoriesId: value,
                       imageUrl: _editedStudent.imageUrl,
                       firstName: _editedStudent.firstName,
                       lastName: _editedStudent.lastName,
@@ -412,6 +478,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                 ),
                 TextFormField(
                   maxLines: 2,
+                  initialValue: _initialValues['biography'],
                   decoration: InputDecoration(labelText: 'Biography'),
                   keyboardType: TextInputType.multiline,
                   focusNode: _biographyFocusNode,
@@ -428,6 +495,8 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                   },
                   onSaved: (value) {
                     _editedStudent = StudentModel(
+                      id: _editedStudent.id,
+                      isFavorite: _editedStudent.isFavorite,
                       categoriesId: _editedStudent.categoriesId,
                       imageUrl: _editedStudent.imageUrl,
                       firstName: _editedStudent.firstName,
@@ -448,6 +517,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                   children: <Widget>[
                     Expanded(
                       child: TextFormField(
+                        initialValue: _initialValues['instagram'],
                         decoration: InputDecoration(labelText: 'Instagram'),
                         textInputAction: TextInputAction.next,
                         focusNode: _instagramFocusNode,
@@ -458,7 +528,8 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         validator: _socialMedia,
                         onSaved: (value) {
                           _editedStudent = StudentModel(
-                            id: null,
+                            id: _editedStudent.id,
+                            isFavorite: _editedStudent.isFavorite,
                             categoriesId: _editedStudent.categoriesId,
                             imageUrl: _editedStudent.imageUrl,
                             firstName: _editedStudent.firstName,
@@ -481,6 +552,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        initialValue: _initialValues['facebook'],
                         decoration: InputDecoration(labelText: 'Facebook'),
                         textInputAction: TextInputAction.next,
                         focusNode: _facebookFocusNode,
@@ -491,7 +563,8 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         validator: _socialMedia,
                         onSaved: (value) {
                           _editedStudent = StudentModel(
-                            id: null,
+                            id: _editedStudent.id,
+                            isFavorite: _editedStudent.isFavorite,
                             categoriesId: _editedStudent.categoriesId,
                             imageUrl: _editedStudent.imageUrl,
                             firstName: _editedStudent.firstName,
@@ -514,6 +587,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        initialValue: _initialValues['linkedIn'],
                         decoration: InputDecoration(labelText: 'LinkedIn'),
                         textInputAction: TextInputAction.next,
                         focusNode: _linkedInFocusNode,
@@ -524,7 +598,8 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         validator: _socialMedia,
                         onSaved: (value) {
                           _editedStudent = StudentModel(
-                            id: null,
+                            id: _editedStudent.id,
+                            isFavorite: _editedStudent.isFavorite,
                             categoriesId: _editedStudent.categoriesId,
                             imageUrl: _editedStudent.imageUrl,
                             firstName: _editedStudent.firstName,
@@ -547,6 +622,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                     ),
                     Expanded(
                       child: TextFormField(
+                        initialValue: _initialValues['twitter'],
                         decoration: InputDecoration(labelText: 'Twitter'),
                         textInputAction: TextInputAction.next,
                         focusNode: _twitterFocusNode,
@@ -557,7 +633,8 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         validator: _socialMedia,
                         onSaved: (value) {
                           _editedStudent = StudentModel(
-                            id: null,
+                            id: _editedStudent.id,
+                            isFavorite: _editedStudent.isFavorite,
                             categoriesId: _editedStudent.categoriesId,
                             imageUrl: _editedStudent.imageUrl,
                             firstName: _editedStudent.firstName,
@@ -587,23 +664,24 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         keyboardType: TextInputType.url,
                         focusNode: _imageUrlFocusNode,
                         controller: _imageUrlController,
-                        onFieldSubmitted: (_){
-                          _saveForm();
-                        },
+                        // onFieldSubmitted: (_){
+                        //   _saveForm();
+                        // },
                         validator: (value){
-                          String pattern = r'^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)$';
-                          RegExp regExp = new RegExp(pattern);
+                          // String pattern = r'^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)$';
+                          // RegExp regExp = new RegExp(pattern);
                           if (value.length == 0) {
-                            return 'Please enter mobile number';
+                            return 'Please enter a imageUrl';
                           }
-                          else if (!regExp.hasMatch(value)) {
-                            return 'Please enter valid mobile number';
-                          }
+                          // else if (!regExp.hasMatch(value)) {
+                          //   return 'Please enter valid mobile number';
+                          // }
                           return null;
                         },
                         onSaved: (value) {
                           _editedStudent = StudentModel(
-                            id: null,
+                            id: _editedStudent.id,
+                            isFavorite: _editedStudent.isFavorite,
                             categoriesId: _editedStudent.categoriesId,
                             imageUrl: value,
                             firstName: _editedStudent.firstName,

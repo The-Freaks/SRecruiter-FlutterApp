@@ -6,7 +6,7 @@ class StudentsProvider with ChangeNotifier {
   List<StudentModel> _studentItems = [
     StudentModel(
       id: '1',
-      categoriesId: ['se'],
+      categoriesId: 'se',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/13164402_1222684387764150_6477654281753606023_n.jpg?_nc_cat=107&ccb=2&_nc_sid=09cbfe&_nc_ohc=0quF60pbwGkAX8H0rgV&_nc_ht=scontent-mxp1-2.xx&oh=bfc1c7fba9e9886ee34f45e2069ccf44&oe=600BD880',
       firstName: 'Arjanit',
@@ -27,7 +27,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '2',
-      categoriesId: ['se'],
+      categoriesId: 'se',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/32737294_365232333985978_5537160310034530304_n.jpg?_nc_cat=101&ccb=2&_nc_sid=09cbfe&_nc_ohc=M3ChFfQcresAX9trApG&_nc_ht=scontent-mxp1-2.xx&oh=f18ec964cf26455e8da2cb2690d7ee7a&oe=600D0DF3',
       firstName: 'Arber',
@@ -49,7 +49,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '3',
-      categoriesId: ['se'],
+      categoriesId: 'se',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/82281086_624218655015356_4381719446331326464_n.jpg?_nc_cat=100&ccb=2&_nc_sid=09cbfe&_nc_ohc=iq8Mv5fXRssAX__7pO7&_nc_ht=scontent-mxp1-2.xx&oh=827739925af0a3c60affb1bbca89f062&oe=600ED147',
       firstName: 'Diellza',
@@ -71,7 +71,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '4',
-      categoriesId: ['se'],
+      categoriesId: 'se',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Ideal',
@@ -93,7 +93,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '5',
-      categoriesId: ['gd'],
+      categoriesId: 'gd',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Hamdi',
@@ -115,7 +115,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '6',
-      categoriesId: ['gd'],
+      categoriesId: 'gd',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Shukri',
@@ -137,7 +137,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '7',
-      categoriesId: ['gd'],
+      categoriesId: 'gd',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Sevdaim',
@@ -159,7 +159,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '8',
-      categoriesId: ['gd'],
+      categoriesId: 'gd',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Shpresmir',
@@ -181,7 +181,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '9',
-      categoriesId: ['bm'],
+      categoriesId: 'bm',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Albin',
@@ -203,7 +203,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '10',
-      categoriesId: ['bm'],
+      categoriesId: 'bm',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Isa',
@@ -225,7 +225,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '11',
-      categoriesId: ['inf'],
+      categoriesId: 'inf',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Donika',
@@ -247,7 +247,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '12',
-      categoriesId: ['inf'],
+      categoriesId: 'inf',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Shpresa',
@@ -269,7 +269,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '13',
-      categoriesId: ['eng'],
+      categoriesId: 'eng',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Blerta',
@@ -291,7 +291,7 @@ class StudentsProvider with ChangeNotifier {
     ),
     StudentModel(
       id: '14',
-      categoriesId: ['eng'],
+      categoriesId: 'eng',
       imageUrl:
           'https://scontent-mxp1-2.xx.fbcdn.net/v/t1.0-9/189918_172478429564308_191876033_n.jpg?_nc_cat=102&ccb=2&_nc_sid=de6eea&_nc_ohc=6x950toLvhoAX8Q9Id4&_nc_ht=scontent-mxp1-2.xx&oh=e03a84d71f926f93fb014d24f0697465&oe=600E1E9B',
       firstName: 'Arta',
@@ -344,5 +344,16 @@ class StudentsProvider with ChangeNotifier {
     );
     _studentItems.add(newStudent);
     notifyListeners();
+  }
+  
+  void updateStudent(String id, StudentModel newStudent){
+    final studIndex = _studentItems.indexWhere((student) => student.id == id);
+    if(studIndex >= 0){
+      _studentItems[studIndex] = newStudent;
+      notifyListeners();
+    }else{
+      print('...');
+    }
+
   }
 }

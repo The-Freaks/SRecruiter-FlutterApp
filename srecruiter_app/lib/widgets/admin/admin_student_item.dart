@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
 
+import '../../screens/admin/edit_student_screen.dart';
 import '../../models/student_model.dart';
-import '../../screens/student_detail_screen.dart';
 
 class AdminStudentItem extends StatelessWidget {
   @override
@@ -80,7 +79,9 @@ class AdminStudentItem extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       IconButton(
-                        onPressed: null,
+                        onPressed: (){
+                          Navigator.of(context).pushNamed(EditStudentScreen.routeName, arguments: student.id);
+                        },
                         icon: Icon(
                           Icons.edit_outlined,
                           color: Theme.of(context).primaryColor,
