@@ -354,6 +354,10 @@ class StudentsProvider with ChangeNotifier {
     }else{
       print('...');
     }
+  }
 
+  void deleteStudent(String id){
+    _studentItems.removeWhere((student) => student.id == id);
+    notifyListeners();
   }
 }

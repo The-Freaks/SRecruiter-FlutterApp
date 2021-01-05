@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:srecruiter_app/providers/students_provider.dart';
 
 import '../../screens/admin/edit_student_screen.dart';
 import '../../models/student_model.dart';
@@ -53,6 +54,7 @@ class AdminStudentItem extends StatelessWidget {
             ),
           ),
         );
+        Provider.of<StudentsProvider>(context, listen: false).deleteStudent(student.id);
       },
       child: Card(
         shadowColor: Theme.of(context).primaryColor,
