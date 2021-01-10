@@ -65,17 +65,13 @@ class AdminStudentItem extends StatelessWidget {
         child: Column(
           children: <Widget>[
             ListTile(
-                leading: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Image.network(
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(
                     student.imageUrl,
-                    fit: BoxFit.cover,
                   ),
                 ),
                 title: Text(student.firstName + ' ' + student.lastName),
-                subtitle: Text(
-                    'Grade: ' + student.grade + '\n' + student.profession),
-                isThreeLine: true,
+                subtitle: Text(student.profession),
                 trailing: Consumer<StudentModel>(
                   builder: (ctx, student, _) => Row(
                     mainAxisSize: MainAxisSize.min,

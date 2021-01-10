@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 import '../models/student_model.dart';
 
@@ -325,9 +328,27 @@ class StudentsProvider with ChangeNotifier {
     return studentItems.firstWhere((stud) => stud.id == id);
   }
 
-  void addStudent(StudentModel student){
-    final newStudent = StudentModel(
-        id: DateTime.now().toString(),
+  Future<void> addStudent(StudentModel student) async{
+    const url = 'https://srecruiter-96183-default-rtdb.firebaseio.com/students.json';
+    try{
+      final response = await http.post(url, body: json.encode({
+          'categoriesId': student.categoriesId,
+          'imageUrl': student.imageUrl,
+          'firstName': student.firstName,
+          'lastName': student.lastName,
+          'profession': student.profession,
+          'grade': student.grade,
+          'email': student.email,
+          'phoneNumber': student.phoneNumber,
+          'biography': student.biography,
+          'instagram': student.instagram,
+          'facebook': student.facebook,
+          'linkedIn': student.linkedIn,
+          'twitter': student.twitter,
+          'isFavorite': student.isFavorite,
+      }));
+      final newStudent = StudentModel(
+        id: json.decode(response.body)['name'],
         categoriesId: student.categoriesId,
         imageUrl: student.imageUrl,
         firstName: student.firstName,
@@ -341,9 +362,12 @@ class StudentsProvider with ChangeNotifier {
         facebook: student.facebook,
         linkedIn: student.linkedIn,
         twitter: student.twitter,
-    );
-    _studentItems.add(newStudent);
-    notifyListeners();
+      );
+      _studentItems.add(newStudent);
+      notifyListeners();
+    }catch(error){
+      throw error;
+    }
   }
   
   void updateStudent(String id, StudentModel newStudent){
