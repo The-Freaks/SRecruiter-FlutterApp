@@ -170,7 +170,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
         setState(() {
           _isLoading = false;
         });
-        Navigator.of(context).pop();
+        // Navigator.of(context).pop();
       }
     }
   }

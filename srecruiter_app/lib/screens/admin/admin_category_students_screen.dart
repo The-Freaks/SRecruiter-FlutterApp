@@ -19,16 +19,24 @@ class AdminCategoryStudentsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(categoryTitle),
-        actions: <Widget>[],
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            splashColor: Theme.of(context).primaryColor,
+            onPressed: () {
+              Navigator.of(context).pushNamed(EditStudentScreen.routeName);
+              },
+          )
+        ],
       ),
       body: AdminCategoryStudentItem(),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        splashColor: Theme.of(context).primaryColor,
-        onPressed: () {
-          Navigator.of(context).pushNamed(EditStudentScreen.routeName);
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: Icon(Icons.add),
+      //   splashColor: Theme.of(context).primaryColor,
+      //   onPressed: () {
+      //     Navigator.of(context).pushNamed(EditStudentScreen.routeName);
+      //   },
+      // ),
     );
   }
 }

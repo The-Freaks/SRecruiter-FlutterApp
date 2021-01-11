@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:srecruiter_app/providers/students_provider.dart';
 
-import 'admin/edit_student_screen.dart';
 import '../widgets/category_student_item.dart';
 
 enum FilterOptions {
@@ -17,6 +18,24 @@ class CategoryStudentsScreen extends StatefulWidget {
 
 class _CategoryStudentsScreenState extends State<CategoryStudentsScreen> {
   var _showOnlyFavorites = false;
+  var _isInit = true;
+  var _isLoading = false;
+
+  @override
+  void didChangeDependencies() {
+    if(_isInit){
+      setState(() {
+        _isLoading = true;
+      });
+      Provider.of<StudentsProvider>(context).fetchAndSetStudents().then((_) {
+        setState(() {
+          _isLoading = false;
+        });
+      });
+    }
+    _isInit = false;
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +69,7 @@ class _CategoryStudentsScreenState extends State<CategoryStudentsScreen> {
                   ])
         ],
       ),
-      body: CategoryStudentItem(_showOnlyFavorites),
+      body: _isLoading ? Center(child: CircularProgressIndicator(),) : CategoryStudentItem(_showOnlyFavorites),
     );
   }
 }
