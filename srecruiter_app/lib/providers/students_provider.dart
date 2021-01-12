@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/http_exception.dart';
 import '../models/student_model.dart';
 
 class StudentsProvider with ChangeNotifier {
@@ -337,21 +338,21 @@ class StudentsProvider with ChangeNotifier {
       List<StudentModel> loadedStudents = [];
       extractedData.forEach((studId, studData) {
         loadedStudents.add(StudentModel(
-            id: studId,
-            categoriesId: studData['categoriesId'],
-            imageUrl: studData['imageUrl'],
-            firstName: studData['firstName'],
-            lastName: studData['lastName'],
-            profession: studData['profession'],
-            grade: studData['grade'],
-            email: studData['email'],
-            phoneNumber: studData['phoneNumber'],
-            biography: studData['biography'],
-            instagram: studData['instagram'],
-            facebook: studData['facebook'],
-            linkedIn: studData['linkedIn'],
-            twitter: studData['twitter'],
-            isFavorite: studData['isFavorite'],
+          id: studId,
+          categoriesId: studData['categoriesId'],
+          imageUrl: studData['imageUrl'],
+          firstName: studData['firstName'],
+          lastName: studData['lastName'],
+          profession: studData['profession'],
+          grade: studData['grade'],
+          email: studData['email'],
+          phoneNumber: studData['phoneNumber'],
+          biography: studData['biography'],
+          instagram: studData['instagram'],
+          facebook: studData['facebook'],
+          linkedIn: studData['linkedIn'],
+          twitter: studData['twitter'],
+          isFavorite: studData['isFavorite'],
         ));
       });
       _studentItems = loadedStudents;
@@ -405,29 +406,31 @@ class StudentsProvider with ChangeNotifier {
     }
   }
 
-  Future<void> updateStudent(String id, StudentModel newStudent) async{
+  Future<void> updateStudent(String id, StudentModel newStudent) async {
     final studIndex = _studentItems.indexWhere((student) => student.id == id);
     if (studIndex >= 0) {
-      final url = 'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id.json';
-      try{
-        await http.put(url, body: json.encode({
-          'categoriesId': newStudent.categoriesId,
-          'imageUrl': newStudent.imageUrl,
-          'firstName': newStudent.firstName,
-          'lastName': newStudent.lastName,
-          'profession': newStudent.profession,
-          'grade': newStudent.grade,
-          'email': newStudent.email,
-          'phoneNumber': newStudent.phoneNumber,
-          'biography': newStudent.biography,
-          'instagram': newStudent.instagram,
-          'facebook': newStudent.facebook,
-          'linkedIn': newStudent.linkedIn,
-          'twitter': newStudent.twitter,
-        }));
+      final url =
+          'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id.json';
+      try {
+        await http.put(url,
+            body: json.encode({
+              'categoriesId': newStudent.categoriesId,
+              'imageUrl': newStudent.imageUrl,
+              'firstName': newStudent.firstName,
+              'lastName': newStudent.lastName,
+              'profession': newStudent.profession,
+              'grade': newStudent.grade,
+              'email': newStudent.email,
+              'phoneNumber': newStudent.phoneNumber,
+              'biography': newStudent.biography,
+              'instagram': newStudent.instagram,
+              'facebook': newStudent.facebook,
+              'linkedIn': newStudent.linkedIn,
+              'twitter': newStudent.twitter,
+            }));
         _studentItems[studIndex] = newStudent;
         notifyListeners();
-      }catch(error){
+      } catch (error) {
         throw error;
       }
     } else {
@@ -435,8 +438,18 @@ class StudentsProvider with ChangeNotifier {
     }
   }
 
-  void deleteStudent(String id) {
-    _studentItems.removeWhere((student) => student.id == id);
+  Future<void> deleteStudent(String id) async {
+    final url = 'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id.json';
+    final existingStudentIndex = _studentItems.indexWhere((student) => student.id == id);
+    var existingStudent = _studentItems[existingStudentIndex];
+    _studentItems.removeAt(existingStudentIndex);
     notifyListeners();
+    final response = await http.delete(url);
+    if (response.statusCode >= 400) {
+      _studentItems.insert(existingStudentIndex, existingStudent);
+      notifyListeners();
+      return HttpException('Could not delete item.');
+    }
+    existingStudent = null;
   }
 }

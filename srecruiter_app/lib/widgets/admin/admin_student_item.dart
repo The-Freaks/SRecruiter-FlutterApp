@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:srecruiter_app/providers/students_provider.dart';
 
+import '../../providers/students_provider.dart';
 import '../../screens/admin/edit_student_screen.dart';
 import '../../models/student_model.dart';
 
 class AdminStudentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final scaffold = Scaffold.of(context);
     final student = Provider.of<StudentModel>(context, listen: false);
     return Dismissible(
       key: ValueKey(student.id),
@@ -23,38 +24,33 @@ class AdminStudentItem extends StatelessWidget {
         margin: EdgeInsets.all(10),
       ),
       direction: DismissDirection.endToStart,
-      confirmDismiss: (direction) {
+      confirmDismiss: (_) {
         return showDialog(
           context: context,
           builder: (ctx) => AlertDialog(
             title: Text('Are you sure?'),
-            content: Text('Are you certain that you want to delete this student?'),
+            content:
+                Text('Are you certain that you want to delete this student?'),
             actions: [
               FlatButton(
-                onPressed: (){
+                onPressed: () {
                   Navigator.of(ctx).pop(false);
                 },
                 child: Text('No'),
               ),
               FlatButton(
-                onPressed: (){
+                onPressed: () {
                   Navigator.of(ctx).pop(true);
                 },
-                child: Text('Yes'),),
+                child: Text('Yes'),
+              ),
             ],
           ),
         );
       },
-      onDismissed: (direction) {
-        Scaffold.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Item deleted',
-              textAlign: TextAlign.center,
-            ),
-          ),
-        );
-        Provider.of<StudentsProvider>(context, listen: false).deleteStudent(student.id);
+      onDismissed: (_) async {
+          await Provider.of<StudentsProvider>(context, listen: false)
+              .deleteStudent(student.id);
       },
       child: Card(
         shadowColor: Theme.of(context).primaryColor,
@@ -77,8 +73,10 @@ class AdminStudentItem extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       IconButton(
-                        onPressed: (){
-                          Navigator.of(context).pushNamed(EditStudentScreen.routeName, arguments: student.id);
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(
+                              EditStudentScreen.routeName,
+                              arguments: student.id);
                         },
                         icon: Icon(
                           Icons.edit_outlined,
