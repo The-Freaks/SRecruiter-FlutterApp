@@ -351,6 +351,7 @@ class StudentsProvider with ChangeNotifier {
             facebook: studData['facebook'],
             linkedIn: studData['linkedIn'],
             twitter: studData['twitter'],
+            isFavorite: studData['isFavorite'],
         ));
       });
       _studentItems = loadedStudents;
@@ -404,11 +405,31 @@ class StudentsProvider with ChangeNotifier {
     }
   }
 
-  void updateStudent(String id, StudentModel newStudent) {
+  Future<void> updateStudent(String id, StudentModel newStudent) async{
     final studIndex = _studentItems.indexWhere((student) => student.id == id);
     if (studIndex >= 0) {
-      _studentItems[studIndex] = newStudent;
-      notifyListeners();
+      final url = 'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id.json';
+      try{
+        await http.put(url, body: json.encode({
+          'categoriesId': newStudent.categoriesId,
+          'imageUrl': newStudent.imageUrl,
+          'firstName': newStudent.firstName,
+          'lastName': newStudent.lastName,
+          'profession': newStudent.profession,
+          'grade': newStudent.grade,
+          'email': newStudent.email,
+          'phoneNumber': newStudent.phoneNumber,
+          'biography': newStudent.biography,
+          'instagram': newStudent.instagram,
+          'facebook': newStudent.facebook,
+          'linkedIn': newStudent.linkedIn,
+          'twitter': newStudent.twitter,
+        }));
+        _studentItems[studIndex] = newStudent;
+        notifyListeners();
+      }catch(error){
+        throw error;
+      }
     } else {
       print('...');
     }

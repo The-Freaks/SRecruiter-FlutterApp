@@ -139,39 +139,36 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
     setState(() {
       _isLoading = true;
     });
-    if (_editedStudent.id != null) {
-      Provider.of<StudentsProvider>(context, listen: false)
-          .updateStudent(_editedStudent.id, _editedStudent);
+
+    try{
+      if (_editedStudent.id != null) {
+          await Provider.of<StudentsProvider>(context, listen: false)
+              .updateStudent(_editedStudent.id, _editedStudent);
+        } else {
+          await Provider.of<StudentsProvider>(context, listen: false)
+              .addStudent(_editedStudent);
+        }
+      } catch (error) {
+      await showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: Text('An error occurred'),
+          content: Text('Something went wrong!'),
+          actions: <Widget>[
+            FlatButton(
+              onPressed: (){
+                Navigator.of(ctx).pop();
+              },
+              child: Text('Okay'),
+            ),
+          ],
+        ),
+      );
+    } finally {
       setState(() {
         _isLoading = false;
       });
       Navigator.of(context).pop();
-    } else {
-      try{
-        await Provider.of<StudentsProvider>(context, listen: false)
-            .addStudent(_editedStudent);
-      }catch(error){
-        await showDialog(
-          context: context,
-          builder: (ctx) => AlertDialog(
-            title: Text('An error ocurred'),
-            content: Text('Something went wrong!'),
-            actions: <Widget>[
-              FlatButton(
-                onPressed: (){
-                  Navigator.of(ctx).pop();
-                },
-                child: Text('Okay'),
-              ),
-            ],
-          ),
-        );
-      } finally{
-        setState(() {
-          _isLoading = false;
-        });
-        // Navigator.of(context).pop();
-      }
     }
   }
 
