@@ -42,7 +42,7 @@ class StudentItem extends StatelessWidget {
                     children: <Widget>[
                       IconButton(
                         onPressed: () {
-                          student.toggelFavoriteStatus();
+                          student.toggleFavoriteStatus();
                         },
                         icon: Icon(
                           student.isFavorite

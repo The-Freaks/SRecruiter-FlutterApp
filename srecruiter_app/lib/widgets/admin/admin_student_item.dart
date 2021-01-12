@@ -49,8 +49,18 @@ class AdminStudentItem extends StatelessWidget {
         );
       },
       onDismissed: (_) async {
-          await Provider.of<StudentsProvider>(context, listen: false)
-              .deleteStudent(student.id);
+        await Provider.of<StudentsProvider>(context, listen: false)
+            .deleteStudent(student.id);
+        // try{
+        //   await Provider.of<StudentsProvider>(context, listen: false)
+        //       .deleteStudent(student.id);
+        // }catch(error){
+        //   scaffold.showSnackBar(
+        //     SnackBar(
+        //         content: Text('FAILED'),
+        //     ),
+        //   );
+        // }
       },
       child: Card(
         shadowColor: Theme.of(context).primaryColor,

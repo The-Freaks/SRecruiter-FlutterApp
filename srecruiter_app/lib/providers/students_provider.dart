@@ -398,6 +398,7 @@ class StudentsProvider with ChangeNotifier {
         facebook: student.facebook,
         linkedIn: student.linkedIn,
         twitter: student.twitter,
+        isFavorite: student.isFavorite,
       );
       _studentItems.add(newStudent);
       notifyListeners();
@@ -445,11 +446,24 @@ class StudentsProvider with ChangeNotifier {
     _studentItems.removeAt(existingStudentIndex);
     notifyListeners();
     final response = await http.delete(url);
-    if (response.statusCode >= 400) {
-      _studentItems.insert(existingStudentIndex, existingStudent);
-      notifyListeners();
-      return HttpException('Could not delete item.');
-    }
+      if (response.statusCode >= 400) {
+        _studentItems.insert(existingStudentIndex, existingStudent);
+        notifyListeners();
+        return HttpException('Could not delete item.');
+      }
     existingStudent = null;
+    // try{
+    //   final response = await http.delete(url);
+    //   if (response.statusCode >= 400) {
+    //     _studentItems.insert(existingStudentIndex, existingStudent);
+    //     notifyListeners();
+    //     return HttpException('Could not delete item.');
+    //   }
+    // }catch(error){
+    //   _studentItems.insert(existingStudentIndex, existingStudent);
+    //   notifyListeners();
+    //   throw error;
+    // }
+    // existingStudent = null;
   }
 }

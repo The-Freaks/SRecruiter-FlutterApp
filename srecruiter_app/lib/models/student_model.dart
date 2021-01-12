@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
 
 class StudentModel with ChangeNotifier {
   final String id;
@@ -37,8 +40,25 @@ class StudentModel with ChangeNotifier {
     this.isFavorite = false,
   });
 
-  void toggelFavoriteStatus() {
+  void _isFavStat(bool newFavStat){
+    isFavorite = newFavStat;
+    notifyListeners();
+  }
+
+  Future<void> toggleFavoriteStatus() async{
+    final oldStatus = isFavorite;
     isFavorite = !isFavorite;
     notifyListeners();
+    final url = 'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id.json';
+    try{
+      final response = await http.patch(url, body: json.encode({
+        'isFavorite' : isFavorite
+      }));
+      if(response.statusCode >= 400){
+        _isFavStat(oldStatus);
+      }
+    }catch(error){
+      _isFavStat(oldStatus);
+    }
   }
 }
