@@ -440,7 +440,7 @@ class StudentsProvider with ChangeNotifier {
   }
 
   Future<void> deleteStudent(String id) async {
-    final url = 'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id.json';
+    final url = 'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id';
     final existingStudentIndex = _studentItems.indexWhere((student) => student.id == id);
     var existingStudent = _studentItems[existingStudentIndex];
     _studentItems.removeAt(existingStudentIndex);

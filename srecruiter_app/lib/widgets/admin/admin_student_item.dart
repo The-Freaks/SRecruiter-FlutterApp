@@ -8,7 +8,6 @@ import '../../models/student_model.dart';
 class AdminStudentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final scaffold = Scaffold.of(context);
     final student = Provider.of<StudentModel>(context, listen: false);
     return Dismissible(
       key: ValueKey(student.id),
