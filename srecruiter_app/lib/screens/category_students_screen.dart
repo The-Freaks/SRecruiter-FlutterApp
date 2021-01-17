@@ -41,11 +41,11 @@ class _CategoryStudentsScreenState extends State<CategoryStudentsScreen> {
               icon: Icon(Icons.more_vert),
               itemBuilder: (_) => [
                     PopupMenuItem(
-                      child: Text('Favorites only'),
+                      child: const Text('Favorites only'),
                       value: FilterOptions.Favorites,
                     ),
                     PopupMenuItem(
-                      child: Text('Show All'),
+                      child: const Text('Show All'),
                       value: FilterOptions.All,
                     ),
                   ])

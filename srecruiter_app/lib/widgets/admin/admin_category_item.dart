@@ -17,7 +17,7 @@ class AdminCategoryItem extends StatelessWidget {
         });
       },
       splashColor: Theme.of(context).primaryColor,
-      borderRadius: BorderRadius.circular(15),
+      // borderRadius: BorderRadius.circular(15),
       child: ListTile(
         title: Image.network(category.imageUrl),
         subtitle: Container(

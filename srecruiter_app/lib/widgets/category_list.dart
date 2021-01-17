@@ -7,14 +7,15 @@ import 'category_item.dart';
 class CategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
     final categoriesData = Provider.of<CategoriesProvider>(context);
     final categories = categoriesData.categoryItems;
     return Container(
-      height: 140,
+      height: deviceSize.height,
       padding: EdgeInsets.only(top: 10),
       child: GridView(
         padding: EdgeInsets.all(5),
-        scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.vertical,
         children: categories
             .map((catData) => Center(
                   child: ChangeNotifierProvider.value(
@@ -24,7 +25,7 @@ class CategoryList extends StatelessWidget {
                 ))
             .toList(),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 130,
+          maxCrossAxisExtent: 170,
           mainAxisSpacing: 20,
           crossAxisSpacing: 20,
         ),

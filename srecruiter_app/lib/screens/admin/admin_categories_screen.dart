@@ -15,7 +15,7 @@ class AdminCategoriesScreen extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           Container(
-            alignment: Alignment.centerLeft,
+            // alignment: Alignment.centerLeft,
             padding: const EdgeInsets.only(top: 15, left: 15),
             child: const Text(
               'Categories',

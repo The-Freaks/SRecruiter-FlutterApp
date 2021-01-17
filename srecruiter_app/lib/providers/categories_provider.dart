@@ -34,6 +34,24 @@ class CategoriesProvider with ChangeNotifier {
         imageUrl:
             'https://www.verdadesign.com/assets/thumbnails/image/winnipeg-graphic-design.png',
     ),
+    CategoryModel(
+      id: 'eng',
+      title: 'English',
+      imageUrl:
+      'https://www.verdadesign.com/assets/thumbnails/image/winnipeg-graphic-design.png',
+    ),
+    CategoryModel(
+      id: 'eng',
+      title: 'English',
+      imageUrl:
+      'https://www.verdadesign.com/assets/thumbnails/image/winnipeg-graphic-design.png',
+    ),
+    CategoryModel(
+      id: 'eng',
+      title: 'English',
+      imageUrl:
+      'https://www.verdadesign.com/assets/thumbnails/image/winnipeg-graphic-design.png',
+    ),
   ];
 
   List<CategoryModel> get categoryItems {
