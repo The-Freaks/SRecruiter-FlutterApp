@@ -16,45 +16,56 @@ class StudentItem extends StatelessWidget {
       },
       borderRadius: BorderRadius.circular(15),
       splashColor: Theme.of(context).accentColor,
-      child: Card(
-        shadowColor: Theme.of(context).primaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        margin: EdgeInsets.all(10),
-        child: Column(
-          children: <Widget>[
-            ListTile(
-                leading: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Image.network(
-                    student.imageUrl,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                title: Text(student.firstName + ' ' + student.lastName),
-                subtitle: Text(
-                    'Grade: ' + student.grade + '\n' + student.profession),
-                isThreeLine: true,
-                trailing: Consumer<StudentModel>(
-                  builder: (ctx, student, _) => Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      IconButton(
-                        onPressed: () {
-                          student.toggleFavoriteStatus();
-                        },
-                        icon: Icon(
-                          student.isFavorite
-                              ? Icons.favorite
-                              : Icons.favorite_border_rounded,
-                          color: Theme.of(context).accentColor,
-                        ),
+      child: Container(
+        height: 100,
+        width: double.infinity,
+        child: Card(
+          shadowColor: Theme.of(context).primaryColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          margin: EdgeInsets.all(10),
+          child: Center(
+            child: Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).primaryColor),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                children: <Widget>[
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                        student.imageUrl,
                       ),
-                    ],
+                    ),
+                    title: Text(student.firstName + ' ' + student.lastName),
+                    subtitle:
+                        Text('Grade: ' + student.grade + '\n' + student.profession),
+                    trailing: Consumer<StudentModel>(
+                      builder: (ctx, student, _) => Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          IconButton(
+                            onPressed: () {
+                              student.toggleFavoriteStatus();
+                            },
+                            icon: Icon(
+                              student.isFavorite
+                                  ? Icons.favorite
+                                  : Icons.favorite_border_rounded,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                )),
-          ],
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );

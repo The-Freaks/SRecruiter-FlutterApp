@@ -8,24 +8,39 @@ class AdminCategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final category = Provider.of<CategoryModel>(context);
-    return InkWell(
-      onTap: () {
-        Navigator.of(context)
-            .pushNamed(AdminCategoryStudentsScreen.routeName, arguments: {
-          'id': category.id,
-          'title': category.title,
-        });
-      },
-      splashColor: Theme.of(context).primaryColor,
-      // borderRadius: BorderRadius.circular(15),
-      child: ListTile(
-        title: Image.network(category.imageUrl),
-        subtitle: Container(
-          padding: EdgeInsets.only(top: 5),
-          child: Text(
-            category.title,
-            style: Theme.of(context).textTheme.headline1,
-            textAlign: TextAlign.center,
+    return Container(
+      color: category.color,
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context)
+              .pushNamed(AdminCategoryStudentsScreen.routeName, arguments: {
+            'id': category.id,
+            'title': category.title,
+          });
+        },
+        splashColor: Theme.of(context).primaryColor,
+        // borderRadius: BorderRadius.circular(15),
+        child: GridTile(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Icon(
+              category.imageUrl,
+              size: 60,
+              color: Colors.white,
+            ),
+          ),
+          footer: Container(
+            height: 30,
+            color: Colors.white54,
+            child: Center(
+              child: Text(
+                category.title,
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
           ),
         ),
       ),

@@ -25,7 +25,7 @@ class AdminCategoryStudentsScreen extends StatelessWidget {
             splashColor: Theme.of(context).primaryColor,
             onPressed: () {
               Navigator.of(context).pushNamed(EditStudentScreen.routeName);
-              },
+            },
           )
         ],
       ),

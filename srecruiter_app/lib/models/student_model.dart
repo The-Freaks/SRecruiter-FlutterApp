@@ -40,24 +40,24 @@ class StudentModel with ChangeNotifier {
     this.isFavorite = false,
   });
 
-  void _isFavStat(bool newFavStat){
+  void _isFavStat(bool newFavStat) {
     isFavorite = newFavStat;
     notifyListeners();
   }
 
-  Future<void> toggleFavoriteStatus() async{
+  Future<void> toggleFavoriteStatus() async {
     final oldStatus = isFavorite;
     isFavorite = !isFavorite;
     notifyListeners();
-    final url = 'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id.json';
-    try{
-      final response = await http.patch(url, body: json.encode({
-        'isFavorite' : isFavorite
-      }));
-      if(response.statusCode >= 400){
+    final url =
+        'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id.json';
+    try {
+      final response =
+          await http.patch(url, body: json.encode({'isFavorite': isFavorite}));
+      if (response.statusCode >= 400) {
         _isFavStat(oldStatus);
       }
-    }catch(error){
+    } catch (error) {
       _isFavStat(oldStatus);
     }
   }

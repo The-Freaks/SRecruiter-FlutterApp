@@ -54,7 +54,8 @@ class MyApp extends StatelessWidget {
           LoginScreen.routeName: (ctx) => LoginScreen(),
           EditStudentScreen.routeName: (ctx) => EditStudentScreen(),
           AdminCategoriesScreen.routeName: (ctx) => AdminCategoriesScreen(),
-          AdminCategoryStudentsScreen.routeName: (ctx) => AdminCategoryStudentsScreen(),
+          AdminCategoryStudentsScreen.routeName: (ctx) =>
+              AdminCategoryStudentsScreen(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (ctx) => PageNotFoundScreen());

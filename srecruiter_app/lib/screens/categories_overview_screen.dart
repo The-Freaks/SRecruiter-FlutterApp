@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/main_drawer.dart';
-import '../widgets/category_list.dart';
+import '../widgets/category_grid.dart';
 
 class CategoriesOverviewScreen extends StatelessWidget {
   @override
@@ -24,7 +24,7 @@ class CategoriesOverviewScreen extends StatelessWidget {
               ),
             ),
           ),
-          CategoryList(),
+          CategoryGrid(),
         ],
       ),
     );

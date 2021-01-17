@@ -12,21 +12,23 @@ class AdminCategoryGrid extends StatelessWidget {
     final categoriesData = Provider.of<CategoriesProvider>(context);
     final categories = categoriesData.categoryItems;
     return Container(
-      height: deviceSize.height,
+      height: 550,
+      padding: EdgeInsets.all(10),
       child: GridView.builder(
         padding: EdgeInsets.all(5),
         scrollDirection: Axis.vertical,
         itemCount: categories.length,
         itemBuilder: (ctx, i) => Center(
           child: ChangeNotifierProvider.value(
-              value: categories[i],
+            value: categories[i],
             child: AdminCategoryItem(),
           ),
         ),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200,
+          childAspectRatio: 3 / 2,
+          mainAxisSpacing: 20,
+          crossAxisSpacing: 20,
         ),
       ),
     );

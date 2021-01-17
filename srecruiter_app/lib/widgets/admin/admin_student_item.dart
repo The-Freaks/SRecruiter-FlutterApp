@@ -12,7 +12,7 @@ class AdminStudentItem extends StatelessWidget {
     return Dismissible(
       key: ValueKey(student.id),
       background: Container(
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).accentColor,
         child: Icon(
           Icons.restore_from_trash_outlined,
           color: Colors.white,
@@ -67,35 +67,41 @@ class AdminStudentItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         margin: EdgeInsets.all(10),
-        child: Column(
-          children: <Widget>[
-            ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    student.imageUrl,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Theme.of(context).primaryColor),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Column(
+            children: <Widget>[
+              ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      student.imageUrl,
+                    ),
                   ),
-                ),
-                title: Text(student.firstName + ' ' + student.lastName),
-                subtitle: Text(student.profession),
-                trailing: Consumer<StudentModel>(
-                  builder: (ctx, student, _) => Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pushNamed(
-                              EditStudentScreen.routeName,
-                              arguments: student.id);
-                        },
-                        icon: Icon(
-                          Icons.edit_outlined,
-                          color: Theme.of(context).primaryColor,
+                  title: Text(student.firstName + ' ' + student.lastName),
+                  subtitle: Text(student.profession),
+                  trailing: Consumer<StudentModel>(
+                    builder: (ctx, student, _) => Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        IconButton(
+                          onPressed: () {
+                            Navigator.of(context).pushNamed(
+                                EditStudentScreen.routeName,
+                                arguments: student.id);
+                          },
+                          icon: Icon(
+                            Icons.edit_outlined,
+                            color: Theme.of(context).primaryColor,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                )),
-          ],
+                      ],
+                    ),
+                  )),
+            ],
+          ),
         ),
       ),
     );

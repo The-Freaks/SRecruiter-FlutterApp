@@ -33,14 +33,15 @@ class LoginScreen extends StatelessWidget {
                       children: <Widget>[
                         TextFormField(
                           decoration: InputDecoration(
-                              labelText: 'E-Mail',
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                              ),
-                              hintText: 'Type your email address',
-                              hintStyle: TextStyle(
-                                fontSize: 12,
-                              ),
+                            labelText: 'E-Mail',
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor),
+                            ),
+                            hintText: 'Type your email address',
+                            hintStyle: TextStyle(
+                              fontSize: 12,
+                            ),
                           ),
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
@@ -58,17 +59,20 @@ class LoginScreen extends StatelessWidget {
                             //_authData['email'] = value;
                           },
                         ),
-                        SizedBox(height: 35,),
+                        SizedBox(
+                          height: 35,
+                        ),
                         TextFormField(
                           decoration: InputDecoration(
-                              labelText: 'Password',
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                              ),
-                              hintText: 'Type your password',
-                              hintStyle: TextStyle(
-                                fontSize: 12,
-                              ),
+                            labelText: 'Password',
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).primaryColor),
+                            ),
+                            hintText: 'Type your password',
+                            hintStyle: TextStyle(
+                              fontSize: 12,
+                            ),
                           ),
                           obscureText: true,
                           textInputAction: TextInputAction.done,
@@ -83,14 +87,14 @@ class LoginScreen extends StatelessWidget {
                             //_authData['password'] = value;
                           },
                         ),
-                        SizedBox(height: 35,),
+                        SizedBox(
+                          height: 35,
+                        ),
                         RaisedButton(
                           color: Theme.of(context).primaryColor,
-                          onPressed: (){
-
-                          },
+                          onPressed: () {},
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5),
+                            borderRadius: BorderRadius.circular(5),
                           ),
                           child: Text(
                             'LOGIN',

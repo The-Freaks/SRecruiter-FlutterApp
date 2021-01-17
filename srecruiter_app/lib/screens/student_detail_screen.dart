@@ -46,150 +46,176 @@ class StudentDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(selectedStudent.firstName + ' ' + selectedStudent.lastName),
       ),
-      body: Center(
-        child: ListView(
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Container(
-                  height: 300.0,
-                  child: GridTile(
-                    child: Container(
-                      color: Colors.redAccent,
-                      child: Image.network(
-                        selectedStudent.imageUrl,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
+      body: ListView(
+        children: <Widget>[
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                height: 300.0,
+                child: GridTile(
+                  child: Container(
+                    color: Colors.redAccent,
+                    child: Image.network(
+                      selectedStudent.imageUrl,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
                     ),
-                    footer: Container(
-                      height: 50,
-                      color: Colors.white70,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            selectedStudent.profession,
-                            style: TextStyle(
-                              fontSize: 17.0,
-                              fontWeight: FontWeight.bold,
-                            ),
+                  ),
+                  footer: Container(
+                    height: 50,
+                    color: Colors.white70,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          selectedStudent.profession,
+                          style: TextStyle(
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Text(
-                            'Grade: ' + selectedStudent.grade,
-                            style: TextStyle(
-                              fontSize: 17.0,
-                            ),
+                        ),
+                        Text(
+                          'Grade: ' + selectedStudent.grade,
+                          style: TextStyle(
+                            fontSize: 17.0,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    IconButton(
+              ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: MaterialButton(
                       onPressed: () async {
                         _launchEmail(selectedStudent.email, context);
                       },
-                      splashColor: Theme.of(context).primaryColor,
-                      splashRadius: 30,
-                      icon: Icon(
-                        Icons.email_outlined,
-                        color: Theme.of(context).primaryColor,
+                      color: Theme.of(context).primaryColor,
+                      height: 50,
+                      elevation: 0.2,
+                      child: Text(
+                        'EMAIL',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
-                    IconButton(
+                  ),
+                  Expanded(
+                    child: MaterialButton(
                       onPressed: () {
                         _launchCaller(selectedStudent.phoneNumber, context);
                       },
                       splashColor: Theme.of(context).primaryColor,
-                      splashRadius: 30,
-                      icon: Icon(
-                        Icons.call,
-                        color: Colors.green,
+                      color: Theme.of(context).primaryColor,
+                      height: 50,
+                      elevation: 0.2,
+                      child: Text(
+                        'CALL',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Text(
+                        "Biography",
+                        style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
+                      ),
+                    ),
+                    Divider(color: Theme.of(context).primaryColor,),
+                    Container(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Text(
+                        selectedStudent.biography,
+                        style: new TextStyle(
+                          fontSize: 14.0,
+                        ),
+                        textAlign: TextAlign.left,
                       ),
                     ),
                   ],
                 ),
-                Divider(),
-                ListTile(
-                  title: new Text(
-                    "Biography",
-                    style:
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: Text(
+                        "Social Media",
+                        style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
-                  ),
-                  subtitle: Padding(
-                    padding: const EdgeInsets.fromLTRB(2.0, 10.0, 5.0, 5.0),
-                    child: new Text(
-                      selectedStudent.biography,
-                      style: new TextStyle(
-                        fontSize: 14.0,
                       ),
-                      textAlign: TextAlign.left,
                     ),
-                  ),
+                    Divider(color: Theme.of(context).primaryColor,),
+                  ],
                 ),
-                Divider(),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      IconButton(
-                        icon: Icon(
-                          FontAwesomeIcons.instagram,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        onPressed: () {
-                          _launchUrl(
-                              "https://www.instagram.com/${selectedStudent.instagram}",
-                              context);
-                        },
+              ),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(
+                        FontAwesomeIcons.instagram,
+                        color: Theme.of(context).primaryColor,
                       ),
-                      IconButton(
-                        icon: Icon(
-                          FontAwesomeIcons.facebook,
-                          color: Colors.blue,
-                        ),
-                        onPressed: () {
-                          _launchUrl(
-                              "https://www.facebook.com/${selectedStudent.facebook}",
-                              context);
-                        },
+                      onPressed: () {
+                        _launchUrl(
+                            "https://www.instagram.com/${selectedStudent.instagram}",
+                            context);
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        FontAwesomeIcons.facebook,
+                        color: Colors.blue,
                       ),
-                      IconButton(
-                        icon: Icon(
-                          FontAwesomeIcons.linkedin,
-                          color: Colors.blueAccent,
-                        ),
-                        onPressed: () {
-                          _launchUrl(
-                              "https://www.linkedin.com/${selectedStudent.linkedIn}",
-                              context);
-                        },
+                      onPressed: () {
+                        _launchUrl(
+                            "https://www.facebook.com/${selectedStudent.facebook}",
+                            context);
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        FontAwesomeIcons.linkedin,
+                        color: Colors.blueAccent,
                       ),
-                      IconButton(
-                        icon: Icon(
-                          FontAwesomeIcons.twitter,
-                          color: Colors.blue,
-                        ),
-                        onPressed: () {
-                          _launchUrl(
-                              "https://www.twitter.com/${selectedStudent.twitter}",
-                              context);
-                        },
+                      onPressed: () {
+                        _launchUrl(
+                            "https://www.linkedin.com/${selectedStudent.linkedIn}",
+                            context);
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        FontAwesomeIcons.twitter,
+                        color: Colors.blue,
                       ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ],
-        ),
+                      onPressed: () {
+                        _launchUrl(
+                            "https://www.twitter.com/${selectedStudent.twitter}",
+                            context);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

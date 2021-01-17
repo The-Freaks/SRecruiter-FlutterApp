@@ -52,21 +52,22 @@ class _CategoryStudentsScreenState extends State<CategoryStudentsScreen> {
         ],
       ),
       body: FutureBuilder(
-        future: Provider.of<StudentsProvider>(context, listen: false).fetchAndSetStudents(),
-        builder: (ctx, dataSnapshot){
-          if(dataSnapshot.connectionState == ConnectionState.waiting){
+        future: Provider.of<StudentsProvider>(context, listen: false)
+            .fetchAndSetStudents(),
+        builder: (ctx, dataSnapshot) {
+          if (dataSnapshot.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(),
             );
-          }else{
-            if(dataSnapshot.error != null){
+          } else {
+            if (dataSnapshot.error != null) {
               return Center(
                 child: AlertDialog(
                   title: Text('An error occurred'),
                   content: Text('Something went wrong!'),
                   actions: <Widget>[
                     FlatButton(
-                      onPressed: (){
+                      onPressed: () {
                         Navigator.of(ctx).pop();
                       },
                       child: Text('Okay'),
@@ -74,8 +75,11 @@ class _CategoryStudentsScreenState extends State<CategoryStudentsScreen> {
                   ],
                 ),
               );
-            }else{
-              return Consumer<StudentsProvider>(builder: (ctx, _, child) => CategoryStudentItem(_showOnlyFavorites),);
+            } else {
+              return Consumer<StudentsProvider>(
+                builder: (ctx, _, child) =>
+                    CategoryStudentItem(_showOnlyFavorites),
+              );
             }
           }
         },
