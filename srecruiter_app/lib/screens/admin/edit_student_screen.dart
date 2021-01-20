@@ -111,6 +111,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
     _linkedInFocusNode.dispose();
     _twitterFocusNode.dispose();
     _imageUrlFocusNode.removeListener(_updateImageUrl);
+    _imageUrlController.dispose();
     super.dispose();
   }
 

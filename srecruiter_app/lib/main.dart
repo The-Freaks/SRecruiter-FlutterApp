@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 
-import './screens/admin/admin_categories_screen.dart';
-import 'screens/admin/edit_student_screen.dart';
 import './providers/students_provider.dart';
-import './screens/categories_overview_screen.dart';
 import './providers/categories_provider.dart';
+import './providers/auth.dart';
+import './screens/admin/register_screen.dart';
+import './screens/admin/admin_categories_screen.dart';
+import './screens/admin/edit_student_screen.dart';
+import './screens/categories_overview_screen.dart';
 import './screens/login_screen.dart';
 import './screens/page_not_found_screen.dart';
 import './screens/student_detail_screen.dart';
@@ -22,6 +25,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => Auth(),
+        ),
         ChangeNotifierProvider(
           create: (ctx) => CategoriesProvider(),
         ),
@@ -45,6 +51,7 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
+        // home: LoginScreen(),
         // default is "/"
         routes: {
           '/': (ctx) => CategoriesOverviewScreen(),
@@ -52,10 +59,10 @@ class MyApp extends StatelessWidget {
           StudentDetailScreen.routeName: (ctx) => StudentDetailScreen(),
           PageNotFoundScreen.routeName: (ctx) => PageNotFoundScreen(),
           LoginScreen.routeName: (ctx) => LoginScreen(),
+          RegisterScreen.routeName: (ctx) => RegisterScreen(),
           EditStudentScreen.routeName: (ctx) => EditStudentScreen(),
           AdminCategoriesScreen.routeName: (ctx) => AdminCategoriesScreen(),
-          AdminCategoryStudentsScreen.routeName: (ctx) =>
-              AdminCategoryStudentsScreen(),
+          AdminCategoryStudentsScreen.routeName: (ctx) => AdminCategoryStudentsScreen(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (ctx) => PageNotFoundScreen());

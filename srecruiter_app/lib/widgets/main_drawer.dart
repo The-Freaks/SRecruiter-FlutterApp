@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:srecruiter_app/screens/admin/register_screen.dart';
 
 import '../screens/admin/edit_student_screen.dart';
 import '../screens/admin/admin_categories_screen.dart';
@@ -77,6 +78,15 @@ class MainDrawer extends StatelessWidget {
                   () {
                     _isSelected = true;
                 Navigator.of(context).pushReplacementNamed(EditStudentScreen.routeName);
+              },
+              context,
+            ),
+            buildListTile(
+              'Add User',
+              Icons.supervised_user_circle_sharp,
+              _isSelected,
+              (){
+                Navigator.of(context).pushReplacementNamed(RegisterScreen.routeName);
               },
               context,
             ),
