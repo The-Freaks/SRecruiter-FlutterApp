@@ -4,6 +4,7 @@ import '../widgets/main_drawer.dart';
 import '../widgets/category_grid.dart';
 
 class CategoriesOverviewScreen extends StatelessWidget {
+  static const routeName = '/dashboard';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

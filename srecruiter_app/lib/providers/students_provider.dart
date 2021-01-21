@@ -317,6 +317,10 @@ class StudentsProvider with ChangeNotifier {
     // ),
   ];
 
+  final String authToken;
+
+  StudentsProvider(this.authToken, this._studentItems);
+
   List<StudentModel> get studentItems {
     return [..._studentItems];
   }
@@ -330,8 +334,8 @@ class StudentsProvider with ChangeNotifier {
   }
 
   Future<void> fetchAndSetStudents() async {
-    const url =
-        'https://srecruiter-96183-default-rtdb.firebaseio.com/students.json';
+    final url =
+        'https://srecruiter-96183-default-rtdb.firebaseio.com/students.json?auth=$authToken';
     try {
       final response = await http.get(url);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
@@ -363,8 +367,8 @@ class StudentsProvider with ChangeNotifier {
   }
 
   Future<void> addStudent(StudentModel student) async {
-    const url =
-        'https://srecruiter-96183-default-rtdb.firebaseio.com/students.json';
+    final url =
+        'https://srecruiter-96183-default-rtdb.firebaseio.com/students.json?auth=$authToken';
     try {
       final response = await http.post(url,
           body: json.encode({
@@ -411,7 +415,7 @@ class StudentsProvider with ChangeNotifier {
     final studIndex = _studentItems.indexWhere((student) => student.id == id);
     if (studIndex >= 0) {
       final url =
-          'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id.json';
+          'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id.json?auth=$authToken';
       try {
         await http.put(url,
             body: json.encode({
@@ -441,11 +445,14 @@ class StudentsProvider with ChangeNotifier {
 
   Future<void> deleteStudent(String id) async {
     final url =
-        'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id';
-    final existingStudentIndex =
-        _studentItems.indexWhere((student) => student.id == id);
+        'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id.json?auth=$authToken';
+    final existingStudentIndex = _studentItems.indexWhere(
+      (student) => student.id == id,
+    );
     var existingStudent = _studentItems[existingStudentIndex];
-    _studentItems.removeAt(existingStudentIndex);
+    _studentItems.removeAt(
+      existingStudentIndex,
+    );
     notifyListeners();
     final response = await http.delete(url);
     if (response.statusCode >= 400) {
@@ -453,6 +460,7 @@ class StudentsProvider with ChangeNotifier {
       notifyListeners();
       return HttpException('Could not delete item.');
     }
+    print(json.decode(response.body));
     existingStudent = null;
     // try{
     //   final response = await http.delete(url);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+import '../providers/auth.dart';
 import '../models/student_model.dart';
 import '../screens/student_detail_screen.dart';
 
@@ -9,6 +10,7 @@ class StudentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final student = Provider.of<StudentModel>(context, listen: false);
+    final authData = Provider.of<Auth>(context, listen: false);
     return InkWell(
       onTap: () {
         Navigator.of(context)
@@ -41,15 +43,15 @@ class StudentItem extends StatelessWidget {
                       ),
                     ),
                     title: Text(student.firstName + ' ' + student.lastName),
-                    subtitle:
-                        Text('Grade: ' + student.grade + '\n' + student.profession),
+                    subtitle: Text(
+                        'Grade: ' + student.grade + '\n' + student.profession),
                     trailing: Consumer<StudentModel>(
                       builder: (ctx, student, _) => Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           IconButton(
                             onPressed: () {
-                              student.toggleFavoriteStatus();
+                              student.toggleFavoriteStatus(authData.token);
                             },
                             icon: Icon(
                               student.isFavorite

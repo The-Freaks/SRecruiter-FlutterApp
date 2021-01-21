@@ -6,8 +6,26 @@ import '../../providers/students_provider.dart';
 
 class AdminCategoryStudentItem extends StatelessWidget {
   Future<void> _refreshStudent(BuildContext ctx) async {
-    await Provider.of<StudentsProvider>(ctx, listen: false)
-        .fetchAndSetStudents();
+    try {
+      await Provider.of<StudentsProvider>(ctx, listen: false)
+          .fetchAndSetStudents();
+    } catch (error) {
+      await showDialog(
+        context: ctx,
+        builder: (ctx) => AlertDialog(
+          title: Text('An error occurred'),
+          content: Text('Opss, something went wrong!'),
+          actions: <Widget>[
+            FlatButton(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+              },
+              child: Text('Okay'),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   @override

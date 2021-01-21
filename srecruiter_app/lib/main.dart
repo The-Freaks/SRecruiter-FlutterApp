@@ -31,42 +31,49 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => CategoriesProvider(),
         ),
-        ChangeNotifierProvider(
-          create: (ctx) => StudentsProvider(),
+        ChangeNotifierProxyProvider<Auth, StudentsProvider>(
+          update: (ctx, auth, previousStudents) => StudentsProvider(auth.token,
+              previousStudents == null ? [] : previousStudents.studentItems),
         ),
       ],
-      child: MaterialApp(
-        theme: ThemeData(
-          primaryColor: Color(0xff006699),
-          accentColor: Color(0xff6699CC),
-          fontFamily: 'Raleway',
-          textTheme: ThemeData.light().textTheme.copyWith(
-                headline1: TextStyle(
-                  fontSize: 13,
-                  fontFamily: 'RobotoCondensed',
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black54,
+      child: Consumer<Auth>(
+        builder: (ctx, auth, _) => MaterialApp(
+          theme: ThemeData(
+            primaryColor: Color(0xff006699),
+            accentColor: Color(0xff6699CC),
+            fontFamily: 'Raleway',
+            textTheme: ThemeData.light().textTheme.copyWith(
+                  headline1: TextStyle(
+                    fontSize: 13,
+                    fontFamily: 'RobotoCondensed',
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black54,
+                  ),
                 ),
-              ),
+          ),
+          debugShowCheckedModeBanner: false,
+          // initialRoute: '/',
+          home: auth.isAuth ? CategoriesOverviewScreen() : LoginScreen(),
+          // default is "/"
+          routes: {
+            // '/': (ctx) => CategoriesOverviewScreen(),
+            // CategoriesOverviewScreen.routeName: (ctx) => CategoriesOverviewScreen(),
+            CategoryStudentsScreen.routeName: (ctx) => CategoryStudentsScreen(),
+            StudentDetailScreen.routeName: (ctx) => StudentDetailScreen(),
+            PageNotFoundScreen.routeName: (ctx) => PageNotFoundScreen(),
+            LoginScreen.routeName: (ctx) => LoginScreen(),
+            RegisterScreen.routeName: (ctx) => RegisterScreen(),
+            EditStudentScreen.routeName: (ctx) => EditStudentScreen(),
+            AdminCategoriesScreen.routeName: (ctx) => AdminCategoriesScreen(),
+            AdminCategoryStudentsScreen.routeName: (ctx) =>
+                AdminCategoryStudentsScreen(),
+          },
+          onUnknownRoute: (settings) {
+            return MaterialPageRoute(
+              builder: (ctx) => PageNotFoundScreen(),
+            );
+          },
         ),
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        // home: LoginScreen(),
-        // default is "/"
-        routes: {
-          '/': (ctx) => CategoriesOverviewScreen(),
-          CategoryStudentsScreen.routeName: (ctx) => CategoryStudentsScreen(),
-          StudentDetailScreen.routeName: (ctx) => StudentDetailScreen(),
-          PageNotFoundScreen.routeName: (ctx) => PageNotFoundScreen(),
-          LoginScreen.routeName: (ctx) => LoginScreen(),
-          RegisterScreen.routeName: (ctx) => RegisterScreen(),
-          EditStudentScreen.routeName: (ctx) => EditStudentScreen(),
-          AdminCategoriesScreen.routeName: (ctx) => AdminCategoriesScreen(),
-          AdminCategoryStudentsScreen.routeName: (ctx) => AdminCategoryStudentsScreen(),
-        },
-        onUnknownRoute: (settings) {
-          return MaterialPageRoute(builder: (ctx) => PageNotFoundScreen());
-        },
       ),
     );
   }
