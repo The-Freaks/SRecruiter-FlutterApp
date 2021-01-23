@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: Text('Login'),
       ),
-      // drawer: MainDrawer(),
+      drawer: MainDrawer(),
       // _isLoading ? Center(child: CircularProgressIndicator(),) :
       body: Padding(
         padding: const EdgeInsets.all(25),

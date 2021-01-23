@@ -32,7 +32,9 @@ class MyApp extends StatelessWidget {
           create: (ctx) => CategoriesProvider(),
         ),
         ChangeNotifierProxyProvider<Auth, StudentsProvider>(
-          update: (ctx, auth, previousStudents) => StudentsProvider(auth.token,
+          update: (ctx, auth, previousStudents) => StudentsProvider(
+              auth.token,
+              auth.userId,
               previousStudents == null ? [] : previousStudents.studentItems),
         ),
       ],
@@ -52,12 +54,11 @@ class MyApp extends StatelessWidget {
                 ),
           ),
           debugShowCheckedModeBanner: false,
-          // initialRoute: '/',
-          home: auth.isAuth ? CategoriesOverviewScreen() : LoginScreen(),
+          initialRoute: '/',
+          // home: auth.isAuth ? CategoriesOverviewScreen() : LoginScreen(),
           // default is "/"
           routes: {
-            // '/': (ctx) => CategoriesOverviewScreen(),
-            // CategoriesOverviewScreen.routeName: (ctx) => CategoriesOverviewScreen(),
+            '/': (ctx) => CategoriesOverviewScreen(),
             CategoryStudentsScreen.routeName: (ctx) => CategoryStudentsScreen(),
             StudentDetailScreen.routeName: (ctx) => StudentDetailScreen(),
             PageNotFoundScreen.routeName: (ctx) => PageNotFoundScreen(),

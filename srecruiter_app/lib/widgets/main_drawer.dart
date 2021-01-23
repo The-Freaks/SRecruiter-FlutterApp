@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:srecruiter_app/screens/admin/register_screen.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/auth.dart';
+import '../screens/admin/register_screen.dart';
 import '../screens/admin/edit_student_screen.dart';
 import '../screens/admin/admin_categories_screen.dart';
 import '../screens/login_screen.dart';
 
 class MainDrawer extends StatelessWidget {
-
-  Widget buildListTile(String title, IconData icon, bool isSelected, Function tapHandler, BuildContext ctx) {
+  Widget buildListTile(
+      String title, IconData icon, Function tapHandler, BuildContext ctx) {
     return ListTile(
       tileColor: Color(0xffF2F7FB),
       selectedTileColor: Theme.of(ctx).accentColor,
-      selected: isSelected,
       leading: Icon(
         icon,
         size: 26,
@@ -32,7 +33,7 @@ class MainDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _isSelected = false;
+    final authData = Provider.of<Auth>(context, listen: false);
     return Drawer(
       child: Container(
         // color: Color(0xffF2F7FB),
@@ -50,59 +51,137 @@ class MainDrawer extends StatelessWidget {
             buildListTile(
               'Dashboard',
               Icons.dashboard_rounded,
-
-              _isSelected,
               () {
                 Navigator.of(context).pushReplacementNamed('/');
-                _isSelected = true;
-                print(_isSelected);
               },
               context,
             ),
-
-            buildListTile(
-              'Manage Students',
-              Icons.edit_off,
-              _isSelected,
-              () {
-                _isSelected = true;
-                Navigator.of(context)
-                    .pushReplacementNamed(AdminCategoriesScreen.routeName);
-              },
-              context,
-            ),
-            buildListTile(
-              'Add Student',
-              Icons.person_add,
-              _isSelected,
-                  () {
-                    _isSelected = true;
-                Navigator.of(context).pushReplacementNamed(EditStudentScreen.routeName);
-              },
-              context,
-            ),
-            buildListTile(
-              'Add User',
-              Icons.supervised_user_circle_sharp,
-              _isSelected,
-              (){
-                Navigator.of(context).pushReplacementNamed(RegisterScreen.routeName);
-              },
-              context,
-            ),
-            buildListTile(
-              'Login',
-              Icons.login_rounded,
-              _isSelected,
-              () {
-                _isSelected = true;
-                Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
-              },
-              context,
-            ),
+            if (authData.isAuth)
+              buildListTile(
+                'Manage Students',
+                Icons.edit_off,
+                () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(AdminCategoriesScreen.routeName);
+                },
+                context,
+              ),
+            if (authData.isAuth)
+              buildListTile(
+                'Add Student',
+                Icons.person_add,
+                () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(EditStudentScreen.routeName);
+                },
+                context,
+              ),
+            if (authData.isAuth)
+              buildListTile(
+                'Add User',
+                Icons.supervised_user_circle_sharp,
+                () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(RegisterScreen.routeName);
+                },
+                context,
+              ),
+            if (authData.isAuth)
+              buildListTile(
+                'Logout',
+                Icons.logout,
+                () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(LoginScreen.routeName);
+                },
+                context,
+              ),
+            if (!authData.isAuth)
+              buildListTile(
+                'Login',
+                Icons.login_rounded,
+                () {
+                  Navigator.of(context)
+                      .pushReplacementNamed(LoginScreen.routeName);
+                },
+                context,
+              ),
           ],
         ),
       ),
     );
   }
 }
+// Widget isAutbuildListTile(
+//     String title, IconData icon, Function tapHandler, BuildContext ctx) {
+//   final authData = Provider.of<Auth>(ctx, listen: false);
+//   if (authData.isAuth) {
+//     return ListTile(
+//       tileColor: Color(0xffF2F7FB),
+//       selectedTileColor: Theme.of(ctx).accentColor,
+//       leading: Icon(
+//         icon,
+//         size: 26,
+//         color: Theme.of(ctx).primaryColor,
+//       ),
+//       title: Text(
+//         title,
+//         style: TextStyle(
+//           fontFamily: 'RobotoCondensed',
+//           fontSize: 16,
+//           fontWeight: FontWeight.bold,
+//           color: Theme.of(ctx).primaryColor,
+//         ),
+//       ),
+//       onTap: tapHandler,
+//     );
+//   } else {
+//     return buildListTile(
+//       'Login',
+//       Icons.login_rounded,
+//       () {
+//         Navigator.of(ctx).pushReplacementNamed(LoginScreen.routeName);
+//       },
+//       ctx,
+//     );
+//   }
+// }
+
+// isAutbuildListTile(
+//   'Manage Students',
+//   Icons.edit_off,
+//   () {
+//     _isSelected = true;
+//     Navigator.of(context)
+//         .pushReplacementNamed(AdminCategoriesScreen.routeName);
+//   },
+//   context,
+// ),
+// isAutbuildListTile(
+//   'Add Student',
+//   Icons.person_add,
+//   () {
+//     Navigator.of(context)
+//         .pushReplacementNamed(EditStudentScreen.routeName);
+//   },
+//   context,
+// ),
+// isAutbuildListTile(
+//   'Add User',
+//   Icons.supervised_user_circle_sharp,
+//   () {
+//     Navigator.of(context)
+//         .pushReplacementNamed(RegisterScreen.routeName);
+//   },
+//   context,
+// ),
+// isAutbuildListTile(
+//   'Logout',
+//   Icons.logout,
+//   () {
+//     _isSelected = true;
+//     Navigator.of(context)
+//         .pushReplacementNamed(LoginScreen.routeName);
+//   },
+//   context,
+// ),

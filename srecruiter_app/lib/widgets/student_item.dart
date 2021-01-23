@@ -51,7 +51,8 @@ class StudentItem extends StatelessWidget {
                         children: <Widget>[
                           IconButton(
                             onPressed: () {
-                              student.toggleFavoriteStatus(authData.token);
+                              student.toggleFavoriteStatus(
+                                  authData.token, authData.userId);
                             },
                             icon: Icon(
                               student.isFavorite

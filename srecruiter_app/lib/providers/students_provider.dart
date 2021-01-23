@@ -318,8 +318,9 @@ class StudentsProvider with ChangeNotifier {
   ];
 
   final String authToken;
+  final String userId;
 
-  StudentsProvider(this.authToken, this._studentItems);
+  StudentsProvider(this.authToken, this.userId, this._studentItems);
 
   List<StudentModel> get studentItems {
     return [..._studentItems];
@@ -334,11 +335,18 @@ class StudentsProvider with ChangeNotifier {
   }
 
   Future<void> fetchAndSetStudents() async {
-    final url =
-        'https://srecruiter-96183-default-rtdb.firebaseio.com/students.json?auth=$authToken';
+    var url =
+        'https://srecruiter-96183-default-rtdb.firebaseio.com/students.json';
     try {
       final response = await http.get(url);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
+      if (extractedData == null) {
+        return;
+      }
+      // url =
+      //     'https://srecruiter-96183-default-rtdb.firebaseio.com/userFavorites/$userId.json';
+      // final favoriteResponse = await http.get(url);
+      // final favoriteData = json.decode(favoriteResponse.body);
       List<StudentModel> loadedStudents = [];
       extractedData.forEach((studId, studData) {
         loadedStudents.add(StudentModel(
@@ -356,7 +364,7 @@ class StudentsProvider with ChangeNotifier {
           facebook: studData['facebook'],
           linkedIn: studData['linkedIn'],
           twitter: studData['twitter'],
-          isFavorite: studData['isFavorite'],
+          // isFavorite: favoriteData[studId],
         ));
       });
       _studentItems = loadedStudents;
@@ -385,7 +393,7 @@ class StudentsProvider with ChangeNotifier {
             'facebook': student.facebook,
             'linkedIn': student.linkedIn,
             'twitter': student.twitter,
-            'isFavorite': student.isFavorite,
+            // 'isFavorite': student.isFavorite,
           }));
       final newStudent = StudentModel(
         id: json.decode(response.body)['name'],

@@ -45,15 +45,14 @@ class StudentModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> toggleFavoriteStatus(String authToken) async {
+  Future<void> toggleFavoriteStatus(String authToken, String userId) async {
     final oldStatus = isFavorite;
     isFavorite = !isFavorite;
     notifyListeners();
     final url =
-        'https://srecruiter-96183-default-rtdb.firebaseio.com/students/$id.json?auth=$authToken';
+        'https://srecruiter-96183-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json';
     try {
-      final response =
-          await http.patch(url, body: json.encode({'isFavorite': isFavorite}));
+      final response = await http.put(url, body: json.encode(isFavorite));
       if (response.statusCode >= 400) {
         _isFavStat(oldStatus);
       }

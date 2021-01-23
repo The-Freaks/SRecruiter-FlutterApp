@@ -55,7 +55,7 @@ class StudentDetailScreen extends StatelessWidget {
                 height: 300.0,
                 child: GridTile(
                   child: Container(
-                    color: Colors.redAccent,
+                    color: Theme.of(context).accentColor,
                     child: Image.network(
                       selectedStudent.imageUrl,
                       width: double.infinity,
@@ -128,11 +128,13 @@ class StudentDetailScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 10),
                       child: Text(
                         "Biography",
-                        style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15.0),
                       ),
                     ),
-                    Divider(color: Theme.of(context).primaryColor,),
+                    Divider(
+                      color: Theme.of(context).primaryColor,
+                    ),
                     Container(
                       padding: const EdgeInsets.only(top: 5),
                       child: Text(
@@ -154,11 +156,13 @@ class StudentDetailScreen extends StatelessWidget {
                     Container(
                       child: Text(
                         "Social Media",
-                        style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15.0),
                       ),
                     ),
-                    Divider(color: Theme.of(context).primaryColor,),
+                    Divider(
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ],
                 ),
               ),
