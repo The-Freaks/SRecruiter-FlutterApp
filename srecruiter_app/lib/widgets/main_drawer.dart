@@ -71,8 +71,7 @@ class MainDrawer extends StatelessWidget {
                 'Add Student',
                 Icons.person_add,
                 () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(EditStudentScreen.routeName);
+                  Navigator.of(context).pushNamed(EditStudentScreen.routeName);
                 },
                 context,
               ),

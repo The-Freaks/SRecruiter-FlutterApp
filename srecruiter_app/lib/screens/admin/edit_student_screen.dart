@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../widgets/main_drawer.dart';
+// import '../../widgets/main_drawer.dart';
 import '../../models/student_model.dart';
 import '../../providers/students_provider.dart';
 
@@ -181,7 +181,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
         title: Text('Edit student'),
         actions: [IconButton(icon: Icon(Icons.save), onPressed: _saveForm)],
       ),
-      drawer: MainDrawer(),
+      // drawer: MainDrawer(),
       body: _isLoading
           ? Center(
               child: CircularProgressIndicator(),
@@ -329,8 +329,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         focusNode: _professionFocusNode,
                         keyboardType: TextInputType.text,
                         onFieldSubmitted: (_) {
-                          FocusScope.of(context)
-                              .requestFocus(_gradeFocusNode);
+                          FocusScope.of(context).requestFocus(_gradeFocusNode);
                         },
                         validator: (value) {
                           String pattern = r'(^[a-zA-Z ]*$)';
@@ -383,8 +382,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         keyboardType: TextInputType.number,
                         focusNode: _gradeFocusNode,
                         onFieldSubmitted: (_) {
-                          FocusScope.of(context)
-                              .requestFocus(_emailFocusNode);
+                          FocusScope.of(context).requestFocus(_emailFocusNode);
                         },
                         validator: (value) {
                           String pattern = r'(^[0-9.]*$)';
@@ -422,7 +420,9 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                           );
                         },
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       TextFormField(
                         initialValue: _initialValues['email'],
                         decoration: InputDecoration(
@@ -441,8 +441,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         keyboardType: TextInputType.emailAddress,
                         focusNode: _emailFocusNode,
                         onFieldSubmitted: (_) {
-                          FocusScope.of(context)
-                              .requestFocus(_numberFocusNode);
+                          FocusScope.of(context).requestFocus(_numberFocusNode);
                         },
                         validator: (value) {
                           Pattern pattern =
@@ -527,14 +526,16 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                           );
                         },
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       TextFormField(
                         initialValue: _initialValues['categoriesId'],
                         decoration: InputDecoration(
-                            labelText: 'Categories',
+                          labelText: 'Categories',
                           border: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).primaryColor,
                             ),
                           ),
                           hintText: 'Enter student\'s category ID',
@@ -575,15 +576,17 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                           );
                         },
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       TextFormField(
                         maxLines: 2,
                         initialValue: _initialValues['biography'],
                         decoration: InputDecoration(
-                            labelText: 'Biography',
+                          labelText: 'Biography',
                           border: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).primaryColor,
                             ),
                           ),
                           hintText: 'Enter student\'s biography',
@@ -623,14 +626,16 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                           );
                         },
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       TextFormField(
                         initialValue: _initialValues['instagram'],
                         decoration: InputDecoration(
                           labelText: 'Instagram',
                           border: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).primaryColor,
                             ),
                           ),
                           hintText: 'Enter student\'s instagram username',
@@ -796,7 +801,9 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                           );
                         },
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       TextFormField(
                         decoration: InputDecoration(
                           labelText: 'ImageUrl',
@@ -857,21 +864,21 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
                         margin: const EdgeInsets.only(top: 10),
                         decoration: BoxDecoration(
                             border: Border.all(
-                              width: 1,
-                              color: Colors.grey,
-                            )),
+                          width: 1,
+                          color: Colors.grey,
+                        )),
                         child: _imageUrlController.text.isEmpty
                             ? Center(
-                          child: Text(
-                            'Image Url',
-                          ),
-                        )
+                                child: Text(
+                                  'Image Url',
+                                ),
+                              )
                             : FittedBox(
-                          child: Image.network(
-                            _imageUrlController.text,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                                child: Image.network(
+                                  _imageUrlController.text,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                       ),
                       SizedBox(
                         height: 30,

@@ -1,39 +1,69 @@
 import 'package:flutter/material.dart';
-import 'package:srecruiter_app/providers/students_provider.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../screens/page_not_found_screen.dart';
+import '../providers/students_provider.dart';
 
 class StudentDetailScreen extends StatelessWidget {
   static const routeName = "/student-detail";
 
-  void _launchUrl(String url, BuildContext ctx) async {
+  Future<void> _launchMaker(
+      String launcherOption, String launcherData, BuildContext ctx) async {
+    var url = "$launcherOption:$launcherData";
     if (await canLaunch(url)) {
       await launch(url);
     } else {
-      throw Navigator.of(ctx).pushNamed(PageNotFoundScreen.routeName);
+      showDialog(
+        context: ctx,
+        builder: (ctx) => AlertDialog(
+          title: Text('An error occurred'),
+          content: Text('Something went wrong, please try again later.'),
+          actions: <Widget>[
+            FlatButton(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+              },
+              child: Text('Okay'),
+            ),
+          ],
+        ),
+      );
     }
   }
 
-  void _launchCaller(String number, BuildContext ctx) async {
-    var url = "tel:$number";
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw Navigator.of(ctx).pushNamed(PageNotFoundScreen.routeName);
+  Future<void> _launchUrl(String url, BuildContext ctx) async {
+    // _launchMaker(url, launchData, ctx);
+    try {
+      if (await canLaunch(url)) {
+        await launch(url);
+      }
+    } catch (error) {
+      return showDialog(
+        context: ctx,
+        builder: (ctx) => AlertDialog(
+          title: Text('An error occurred'),
+          content: Text('Something went wrong, please try again later.'),
+          actions: <Widget>[
+            FlatButton(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+              },
+              child: Text('Okay'),
+            ),
+          ],
+        ),
+      );
     }
   }
 
-  void _launchEmail(String emailId, BuildContext ctx) async {
-    var url = "mailto:$emailId?subject= Hola Señor/Señora";
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw Navigator.of(ctx).pushNamed(PageNotFoundScreen.routeName);
-    }
+  Future<void> _launchCaller(String number, BuildContext ctx) async {
+    await _launchMaker('tel', number, ctx);
+  }
+
+  Future<void> _launchEmail(String emailId, BuildContext ctx) async {
+    await _launchMaker('mailto', '$emailId', ctx);
   }
 
   @override
@@ -177,8 +207,9 @@ class StudentDetailScreen extends StatelessWidget {
                       ),
                       onPressed: () {
                         _launchUrl(
-                            "https://www.instagram.com/${selectedStudent.instagram}",
-                            context);
+                          'https://www.instagram.com/${selectedStudent.instagram}',
+                          context,
+                        );
                       },
                     ),
                     IconButton(
@@ -188,8 +219,9 @@ class StudentDetailScreen extends StatelessWidget {
                       ),
                       onPressed: () {
                         _launchUrl(
-                            "https://www.facebook.com/${selectedStudent.facebook}",
-                            context);
+                          "https://www.facebook.com/${selectedStudent.facebook}",
+                          context,
+                        );
                       },
                     ),
                     IconButton(
@@ -199,8 +231,9 @@ class StudentDetailScreen extends StatelessWidget {
                       ),
                       onPressed: () {
                         _launchUrl(
-                            "https://www.linkedin.com/${selectedStudent.linkedIn}",
-                            context);
+                          "https://www.linkedin.com/${selectedStudent.linkedIn}",
+                          context,
+                        );
                       },
                     ),
                     IconButton(
@@ -210,8 +243,9 @@ class StudentDetailScreen extends StatelessWidget {
                       ),
                       onPressed: () {
                         _launchUrl(
-                            "https://www.twitter.com/${selectedStudent.twitter}",
-                            context);
+                          "https://www.twitter.com/${selectedStudent.twitter}",
+                          context,
+                        );
                       },
                     ),
                   ],
