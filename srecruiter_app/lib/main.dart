@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+import './screens/splash_screen.dart';
 import './providers/students_provider.dart';
 import './providers/categories_provider.dart';
 import './providers/auth.dart';
@@ -54,15 +55,23 @@ class MyApp extends StatelessWidget {
                 ),
           ),
           debugShowCheckedModeBanner: false,
-          initialRoute: '/',
-          // home: auth.isAuth ? CategoriesOverviewScreen() : LoginScreen(),
+          // initialRoute: '/',
+          home: auth.isAuth
+              ? CategoriesOverviewScreen()
+              : FutureBuilder(
+                  future: auth.tryAutoLogin(),
+                  builder: (ctx, authResultSnapshot) =>
+                      authResultSnapshot.connectionState ==
+                              ConnectionState.waiting
+                          ? SplashScreen()
+                          : LoginScreen(),
+                ),
           // default is "/"
           routes: {
-            '/': (ctx) => CategoriesOverviewScreen(),
+            // '/': (ctx) => CategoriesOverviewScreen(),
             CategoryStudentsScreen.routeName: (ctx) => CategoryStudentsScreen(),
             StudentDetailScreen.routeName: (ctx) => StudentDetailScreen(),
             PageNotFoundScreen.routeName: (ctx) => PageNotFoundScreen(),
-            LoginScreen.routeName: (ctx) => LoginScreen(),
             RegisterScreen.routeName: (ctx) => RegisterScreen(),
             EditStudentScreen.routeName: (ctx) => EditStudentScreen(),
             AdminCategoriesScreen.routeName: (ctx) => AdminCategoriesScreen(),

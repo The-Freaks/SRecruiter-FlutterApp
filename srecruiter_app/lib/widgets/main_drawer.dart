@@ -56,7 +56,7 @@ class MainDrawer extends StatelessWidget {
               },
               context,
             ),
-            if (authData.isAuth)
+            if (authData.isUserAdmin)
               buildListTile(
                 'Manage Students',
                 Icons.edit_off,
@@ -66,7 +66,7 @@ class MainDrawer extends StatelessWidget {
                 },
                 context,
               ),
-            if (authData.isAuth)
+            if (authData.isUserAdmin)
               buildListTile(
                 'Add Student',
                 Icons.person_add,
@@ -76,7 +76,7 @@ class MainDrawer extends StatelessWidget {
                 },
                 context,
               ),
-            if (authData.isAuth)
+            if (authData.isUserAdmin)
               buildListTile(
                 'Add User',
                 Icons.supervised_user_circle_sharp,
@@ -86,102 +86,20 @@ class MainDrawer extends StatelessWidget {
                 },
                 context,
               ),
-            if (authData.isAuth)
-              buildListTile(
-                'Logout',
-                Icons.logout,
-                () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(LoginScreen.routeName);
-                },
-                context,
-              ),
-            if (!authData.isAuth)
-              buildListTile(
-                'Login',
-                Icons.login_rounded,
-                () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(LoginScreen.routeName);
-                },
-                context,
-              ),
+            // if (authData.isAuth)
+            buildListTile(
+              'Logout',
+              Icons.exit_to_app,
+              () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pushReplacementNamed('/');
+                authData.logout();
+              },
+              context,
+            ),
           ],
         ),
       ),
     );
   }
 }
-// Widget isAutbuildListTile(
-//     String title, IconData icon, Function tapHandler, BuildContext ctx) {
-//   final authData = Provider.of<Auth>(ctx, listen: false);
-//   if (authData.isAuth) {
-//     return ListTile(
-//       tileColor: Color(0xffF2F7FB),
-//       selectedTileColor: Theme.of(ctx).accentColor,
-//       leading: Icon(
-//         icon,
-//         size: 26,
-//         color: Theme.of(ctx).primaryColor,
-//       ),
-//       title: Text(
-//         title,
-//         style: TextStyle(
-//           fontFamily: 'RobotoCondensed',
-//           fontSize: 16,
-//           fontWeight: FontWeight.bold,
-//           color: Theme.of(ctx).primaryColor,
-//         ),
-//       ),
-//       onTap: tapHandler,
-//     );
-//   } else {
-//     return buildListTile(
-//       'Login',
-//       Icons.login_rounded,
-//       () {
-//         Navigator.of(ctx).pushReplacementNamed(LoginScreen.routeName);
-//       },
-//       ctx,
-//     );
-//   }
-// }
-
-// isAutbuildListTile(
-//   'Manage Students',
-//   Icons.edit_off,
-//   () {
-//     _isSelected = true;
-//     Navigator.of(context)
-//         .pushReplacementNamed(AdminCategoriesScreen.routeName);
-//   },
-//   context,
-// ),
-// isAutbuildListTile(
-//   'Add Student',
-//   Icons.person_add,
-//   () {
-//     Navigator.of(context)
-//         .pushReplacementNamed(EditStudentScreen.routeName);
-//   },
-//   context,
-// ),
-// isAutbuildListTile(
-//   'Add User',
-//   Icons.supervised_user_circle_sharp,
-//   () {
-//     Navigator.of(context)
-//         .pushReplacementNamed(RegisterScreen.routeName);
-//   },
-//   context,
-// ),
-// isAutbuildListTile(
-//   'Logout',
-//   Icons.logout,
-//   () {
-//     _isSelected = true;
-//     Navigator.of(context)
-//         .pushReplacementNamed(LoginScreen.routeName);
-//   },
-//   context,
-// ),

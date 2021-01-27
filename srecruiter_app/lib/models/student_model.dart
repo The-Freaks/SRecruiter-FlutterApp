@@ -40,6 +40,11 @@ class StudentModel with ChangeNotifier {
     this.isFavorite = false,
   });
 
+  // void toggleFavoriteStatus() {
+  //   isFavorite = !isFavorite;
+  //   notifyListeners();
+  // }
+
   void _isFavStat(bool newFavStat) {
     isFavorite = newFavStat;
     notifyListeners();
@@ -50,9 +55,12 @@ class StudentModel with ChangeNotifier {
     isFavorite = !isFavorite;
     notifyListeners();
     final url =
-        'https://srecruiter-96183-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json';
+        'https://srecruiter-96183-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json?auth=$authToken';
     try {
-      final response = await http.put(url, body: json.encode(isFavorite));
+      final response = await http.put(url,
+          body: json.encode(
+            isFavorite,
+          ));
       if (response.statusCode >= 400) {
         _isFavStat(oldStatus);
       }

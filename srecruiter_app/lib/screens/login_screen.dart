@@ -3,8 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:srecruiter_app/models/http_exception.dart';
 
 import '../providers/auth.dart';
-import '../widgets/main_drawer.dart';
-import './categories_overview_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = '/login';
@@ -26,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   };
 
   void _showErrorDialogBox(String message) async {
-    await showDialog(
+    return showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
         title: Text('An error occurred'),
@@ -80,10 +78,14 @@ class _LoginScreenState extends State<LoginScreen> {
     } catch (error) {
       const errorMessage = 'Authentication failed, please try again later.';
       _showErrorDialogBox(errorMessage);
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
     }
-    setState(() {
-      _isLoading = false;
-    });
+    // setState(() {
+    //   _isLoading = false;
+    // });
   }
 
   @override
@@ -92,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: Text('Login'),
       ),
-      drawer: MainDrawer(),
+      // drawer: MainDrawer(),
       // _isLoading ? Center(child: CircularProgressIndicator(),) :
       body: Padding(
         padding: const EdgeInsets.all(25),

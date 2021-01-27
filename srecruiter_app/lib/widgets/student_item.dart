@@ -52,7 +52,9 @@ class StudentItem extends StatelessWidget {
                           IconButton(
                             onPressed: () {
                               student.toggleFavoriteStatus(
-                                  authData.token, authData.userId);
+                                authData.token,
+                                authData.userId,
+                              );
                             },
                             icon: Icon(
                               student.isFavorite
