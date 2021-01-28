@@ -5,7 +5,6 @@ import '../providers/auth.dart';
 import '../screens/admin/register_screen.dart';
 import '../screens/admin/edit_student_screen.dart';
 import '../screens/admin/admin_categories_screen.dart';
-import '../screens/login_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(
@@ -44,8 +43,11 @@ class MainDrawer extends StatelessWidget {
               width: double.infinity,
               alignment: Alignment.center,
               color: Colors.white,
-              child: Image.asset(
-                'assets/images/SR-banner.png',
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Image.asset(
+                  'assets/images/SR-banner.png',
+                ),
               ),
             ),
             buildListTile(

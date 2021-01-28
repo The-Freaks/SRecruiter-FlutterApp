@@ -15,7 +15,7 @@ class StudentDetailScreen extends StatelessWidget {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
-      showDialog(
+      await showDialog(
         context: ctx,
         builder: (ctx) => AlertDialog(
           title: Text('An error occurred'),
@@ -75,6 +75,7 @@ class StudentDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(selectedStudent.firstName + ' ' + selectedStudent.lastName),
+        centerTitle: true,
       ),
       body: ListView(
         children: <Widget>[

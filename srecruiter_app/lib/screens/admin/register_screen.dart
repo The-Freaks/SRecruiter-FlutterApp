@@ -101,6 +101,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Register new user'),
+        centerTitle: true,
       ),
       drawer: MainDrawer(),
       body: _isLoading

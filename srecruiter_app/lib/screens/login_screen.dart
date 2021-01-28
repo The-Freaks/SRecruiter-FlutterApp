@@ -93,6 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),
+        centerTitle: true,
       ),
       // drawer: MainDrawer(),
       // _isLoading ? Center(child: CircularProgressIndicator(),) :

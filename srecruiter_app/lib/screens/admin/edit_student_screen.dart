@@ -179,6 +179,7 @@ class _EditStudentScreenState extends State<EditStudentScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit student'),
+        centerTitle: true,
         actions: [IconButton(icon: Icon(Icons.save), onPressed: _saveForm)],
       ),
       // drawer: MainDrawer(),

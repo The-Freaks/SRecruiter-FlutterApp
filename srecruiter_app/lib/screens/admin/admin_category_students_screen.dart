@@ -19,6 +19,7 @@ class AdminCategoryStudentsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(categoryTitle),
+        centerTitle: true,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),

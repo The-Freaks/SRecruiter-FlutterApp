@@ -10,6 +10,7 @@ class CategoriesOverviewScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Categories'),
+        centerTitle: true,
       ),
       drawer: MainDrawer(),
       body: ListView(

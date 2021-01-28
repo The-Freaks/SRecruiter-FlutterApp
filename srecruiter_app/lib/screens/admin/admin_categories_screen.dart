@@ -10,6 +10,7 @@ class AdminCategoriesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Manage Students'),
+        centerTitle: true,
       ),
       drawer: MainDrawer(),
       body: ListView(

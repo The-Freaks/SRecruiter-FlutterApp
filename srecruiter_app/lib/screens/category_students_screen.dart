@@ -27,6 +27,7 @@ class _CategoryStudentsScreenState extends State<CategoryStudentsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(categoryTitle),
+        centerTitle: true,
         actions: <Widget>[
           PopupMenuButton(
               onSelected: (FilterOptions selectedValue) {
